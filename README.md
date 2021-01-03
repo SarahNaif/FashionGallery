@@ -1,2 +1,0 @@
-# FashionGallery
-#hh
