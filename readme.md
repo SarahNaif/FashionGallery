@@ -12,7 +12,9 @@ In the project, we have two kinds of users, designers and fans. The designer wil
 - Add/edit/delete own posts
 - View single post
 - View all posts
+
 On the other hand, the fan will be able to:
+
 - Sign up a new account
 - Login/logout with sessions
 - View all designers
