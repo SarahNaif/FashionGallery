@@ -1,4 +1,5 @@
 
+/* profile section */
 .profile {
     display: flex;
     padding: 5rem 0;
@@ -16,10 +17,6 @@
     justify-content: center;
     align-items: center;
     margin-right: 3rem;
-}
-
-.profile-contant{
-    float: right;
 }
 
 .profile-stats,
@@ -73,3 +70,34 @@
     font-weight: 600;
 }
 
+
+
+
+
+/* post section */
+
+
+.post {
+    display: flex;
+    padding: 5rem 0;
+}
+
+.post::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.post-image {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+
+.post-description {
+    float: left;
+    width: 100;
+}
