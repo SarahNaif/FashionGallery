@@ -17,6 +17,11 @@ port =4000;
   });
 
 
+  app.get('/designer', (req, res) => {
+    res.render('designer.ejs');
+  });
+
+
 
 // CONNECTIONS
 app.listen(port, () => {
