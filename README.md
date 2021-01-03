@@ -1,3 +1,0 @@
-# FashionGallery
-#fashion
-#fashion
