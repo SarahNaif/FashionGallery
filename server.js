@@ -2,7 +2,7 @@
   const app = express();
 
   const expressLayouts = require('express-ejs-layouts');
-port =4000;
+  port =4000;
 
 
   app.set("view engine", "ejs");
@@ -14,6 +14,11 @@ port =4000;
 
   app.get('/', (req, res) => {
     res.render('index.ejs');
+  });
+
+
+  app.get('/signup', (req, res) => {
+    res.render('SignUp.ejs');
   });
 
 
