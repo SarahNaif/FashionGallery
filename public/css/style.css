@@ -1,0 +1,78 @@
+
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #9c9292;
+  
+  }
+  
+  
+  /* CUSTOMIZE THE CAROUSEL
+  -------------------------------------------------- */
+  
+  /* Carousel base1class */
+  .carousel {
+    margin-bottom: 4rem;
+  }
+  /* Since positioning the image, we need to help out the caption */
+  .carousel-caption {
+    bottom: 50rem;
+    z-index: 10;
+  }
+  .form-inline{
+    padding-bottom: 14rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Declare heights because of positioning of img element */
+  .carousel-item {
+    height: 32rem;
+    background-color: #777;
+  }
+  .carousel-item > img {
+    position: absolute;
+    filter: blur(4px);
+  -webkit-filter: blur(4px);
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+    
+  }
+
+  
+  
+  /* MARKETING CONTENT
+  -------------------------------------------------- */
+  
+  /* Center align the text within the three columns below the carousel */
+  .marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .marketing h2 {
+    font-weight: 400;
+  }
+  .marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+  }
+  .featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  }
+
+  footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  footer p {
+    margin-bottom: .25rem;
+  }
+  
+  .box-shadow {
+     box-shadow: 0 .25rem .75rem rgba(165, 33, 33, 0.05); 
+    }
+  
+  
