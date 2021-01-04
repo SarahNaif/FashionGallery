@@ -21,7 +21,9 @@ port =4000;
     res.render('designer.ejs');
   });
 
-
+  app.get('/edit', (req, res) => {
+    res.render('editpost.ejs');
+  });
 
 // CONNECTIONS
 app.listen(port, () => {

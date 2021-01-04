@@ -1,0 +1,28 @@
+
+<div class="featurette-divider">
+<div class="container marketing">
+    <h2 class="mb-4">Edit Post</h2>
+    <form action="/edit ?_method=put" method="POST" class="row g-3">
+
+        <div class="form-floating mb-4">
+            <input type="Design" class="form-control" id="floatingInput" placeholder="Design">
+            <label for="floatingInput">Design</label>
+        </div>
+    
+        <div class="form-floating mb-4">
+            <input type="text" class="form-control" id="floatingImage" placeholder="Image" name="image">
+            <label for="floatingImage">image</label>
+        </div>
+        <div class="form-floating mb-4">
+            <textarea class="form-control" placeholder="content" id="floatingTextarea2"
+                style="height: 100px"></textarea>
+            <label for="floatingTextarea2">content</label>
+        </div>
+      
+        <div class="col-12">
+
+            <input type="submit" value="Edit Post" class="btn btn-secondary form__input__submit">
+        </div>
+    </div>
+    </form>
+</div>
