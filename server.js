@@ -21,6 +21,10 @@ port =4000;
     res.render('designer.ejs');
   });
 
+  app.get('/addComment', (req, res) => {
+    res.render('addComment.ejs');
+  });
+
 
 
 // CONNECTIONS
