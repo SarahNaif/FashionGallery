@@ -24,19 +24,7 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-
-  app.get('/edit', (req, res) => {
-    res.render('editpost.ejs');
-  });
-
-  app.get('/editDesignerProfile', (req, res) => {
-    res.render('editProfile.ejs');
-  });
-
-// app.get('/signup', (req, res) => {
-//   res.render('SignUp.ejs');
-// });
-
+ 
 app.get('/designer', (req, res) => {
   res.render('designer.ejs');
 });
@@ -48,6 +36,5 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useU
   
   app.use(require('./controllers/designer'))
   
-
 // CONNECTIONS
 app.listen(PORT, () => console.log(`server is running ${PORT}`));
