@@ -20,7 +20,16 @@ let PORT = process.env.PORT
 app.get('/', (req, res) => {
   res.render('index.ejs');
 });
- 
+
+// signup & login path nav 
+app.get('/signup', (req, res) => {
+  res.render('signup.ejs');
+});
+app.get('/login', (req, res) => {
+  res.render('login.ejs');
+});
+
+
 app.get('/designer', (req, res) => {
   res.render('designer.ejs');
 });
