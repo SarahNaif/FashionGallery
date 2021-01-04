@@ -18,7 +18,7 @@ const designerSchema = new Schema({
 
 // methods for login go here
 
-designerSchema.statics.createSecure = (email, password,callback) => {
+designerSchema.statics.createSecure = (email, password,name,gender,callback) => {
   // console.log("I received this email, password :", email, password);
   bcrypt.genSalt((err, salt) => {
     // console.log('brypt salt:', salt)
