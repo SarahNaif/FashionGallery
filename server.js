@@ -6,7 +6,7 @@
 
 
   app.set("view engine", "ejs");
-  app.use(expressLayouts) 
+  app.use(expressLayouts)
   app.use(express.urlencoded({ extended: false }));
   app.use(express.static("public")); 
 
@@ -19,12 +19,16 @@
 
   app.get('/signup', (req, res) => {
     res.render('SignUp.ejs');
+  });
+
 
   app.get('/designer', (req, res) => {
     res.render('designer.ejs');
   });
 
-
+  app.get('/newpost', (req, res) => {
+    res.render('newPost.ejs');
+  });
 
 // CONNECTIONS
 app.listen(port, () => {
