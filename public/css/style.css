@@ -1,7 +1,6 @@
 
 body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+   
     color: #9c9292;
   
   }
@@ -75,4 +74,15 @@ body {
      box-shadow: 0 .25rem .75rem rgba(165, 33, 33, 0.05); 
     }
   
+   
+/* view single post
+----------------------------------------- */
+.singlePost{
+  margin-bottom: 1.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+
+}
   

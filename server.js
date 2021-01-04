@@ -1,33 +1,36 @@
-  const express = require("express");
-  const app = express();
-
-  const expressLayouts = require('express-ejs-layouts');
-port =4000;
+const express = require("express");
+const app = express();
+require('dotenv').config()
 
 
-  app.set("view engine", "ejs");
-  app.use(expressLayouts) 
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.static("public")); 
+const mongoose = require('mongoose')
+const methodOverride = require("method-override");
+const expressLayouts = require('express-ejs-layouts');
 
 
+app.set("view engine", "ejs");
+app.use(expressLayouts)
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public")); 
+// and populate the req.body object
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+let PORT = process.env.PORT
 
-  app.get('/', (req, res) => {
-    res.render('index.ejs');
-  });
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
+ 
+app.get('/designer', (req, res) => {
+  res.render('designer.ejs');
+});
 
-
-  app.get('/designer', (req, res) => {
-    res.render('designer.ejs');
-  });
-
-  app.get('/addComment', (req, res) => {
-    res.render('addComment.ejs');
-  });
-
-
+//connect to MongoDb 
+mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+  console.log("mongoDb is connect")
+  })
+  
+app.use(require('./controllers/designer'))
 
 // CONNECTIONS
-app.listen(port, () => {
-    console.log('listening on port: ', port);
-  });
+app.listen(PORT, () => console.log(`server is running ${PORT}`));
