@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
     res.render('editpost.ejs');
   });
 
+  app.get('/editDesignerProfile', (req, res) => {
+    res.render('editProfile.ejs');
+  });
+
 // app.get('/signup', (req, res) => {
 //   res.render('SignUp.ejs');
 // });
