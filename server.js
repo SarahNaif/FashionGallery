@@ -19,6 +19,9 @@
 
   app.get('/signup', (req, res) => {
     res.render('SignUp.ejs');
+
+  app.get('/designer', (req, res) => {
+    res.render('designer.ejs');
   });
 
 
