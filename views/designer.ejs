@@ -1,14 +1,4 @@
-<head>
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/designer.css">
-</head>
-
-
-<main role="main">
-
-    <!-- tabs menu -->
-
+<main style="margin-top: 4em;" role="main">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -29,16 +19,14 @@
                 <div class="container">
                     <div class="profile">
                         <div class="profile-image">
-                            <img class="rounded-circle"
-                                src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-                                alt="">
+                            <img class="rounded-circle" src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
                         </div>
                         <div class="profile-contant">
                             <div>
                                 <h1 class="profile-user-name">janedoe_</h1>
-                                <button class="btn profile-edit-btn">Edit Profile</button>
+                                <button href="editDesignerProfile" class="btn profile-edit-btn">Edit Profile</button>
                             </div>
-
+                
                             <div class="profile-stats">
                                 <ul>
                                     <li><span class="profile-stat-count">164</span> posts</li>
@@ -46,12 +34,12 @@
                                     <li><span class="profile-stat-count">206</span> following</li>
                                 </ul>
                             </div>
-
+                
                             <div class="profile-bio">
                                 <p><span class="profile-real-name">Jane Doe</span></p>
                                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
                             </div>
-                        </div>
+                        </div>            
                     </div>
 
                 </div>
@@ -62,22 +50,17 @@
                     <!--  -->
                     <div class="row">
 
-                        <a data-toggle="collapse" href="#singlePost" role="button" aria-expanded="false"
-                            aria-controls="singlePost">
-                            <div class="col-lg-4">
-                                <div class="bg-white rounded shadow-sm"><img
-                                        src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                                        alt="" class="img-fluid card-img-top">
-                                    <div class="p-4">
-                                        <h5> <a href="#" class="text-dark">Designer</a></h5>
-                                        <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur
-                                            adipisicing
-                                            elit</p>
-                                    </div>
+                        <div class="col-lg-4">
+                            <div class="bg-white rounded shadow-sm"><img
+                                    src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                                    alt="" class="img-fluid card-img-top">
+                                <div class="p-4">
+                                    <h5> <a href="#" class="text-dark">Designer</a></h5>
+                                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit</p>
                                 </div>
                             </div>
-                        </a>
-
+                        </div>
 
                         <div class="col-lg-4">
                             <div class="bg-white rounded shadow-sm"><img
@@ -108,12 +91,12 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-            </div>
         </div>
     </div>
 
     <!-- single post -->
-    <div class="container collapse" id="singlePost">
+    <!-- add class collapse -->
+    <div class="container " id="singlePost">
         <div class="post">
             <div class="post-image">
                 <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
@@ -131,7 +114,4 @@
 
 
 </main>
-<!-- tab JavaScript plugin. -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
+
