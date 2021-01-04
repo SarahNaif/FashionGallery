@@ -7,23 +7,19 @@ const mongoose = require('mongoose')
 const methodOverride = require("method-override");
 const expressLayouts = require('express-ejs-layouts');
 
+
+app.set("view engine", "ejs");
+app.use(expressLayouts)
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public")); 
 // and populate the req.body object
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.set("view engine", "ejs");
-app.use(expressLayouts) 
-app.use(methodOverride("_method"));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public")); 
-
 let PORT = process.env.PORT
-
 
 app.get('/', (req, res) => {
   res.render('index.ejs');
 });
-
  
 app.get('/designer', (req, res) => {
   res.render('designer.ejs');
@@ -34,7 +30,7 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useU
   console.log("mongoDb is connect")
   })
   
-  app.use(require('./controllers/designer'))
+app.use(require('./controllers/designer'))
   
 // CONNECTIONS
 app.listen(PORT, () => console.log(`server is running ${PORT}`));
