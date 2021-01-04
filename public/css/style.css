@@ -1,28 +1,21 @@
 
 body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+   
     color: #9c9292;
   
   }
   
   
-  /* CUSTOMIZE THE CAROUSEL
-  -------------------------------------------------- */
+  /* CUSTOMIZE THE CAROUSEL*/
   
   /* Carousel base1class */
   .carousel {
     margin-bottom: 4rem;
   }
-  /* Since positioning the image, we need to help out the caption */
+  /* positioning the image */
   .carousel-caption {
     bottom: 50rem;
     z-index: 10;
-  }
-  .form-inline{
-    padding-bottom: 14rem;
-    display: flex;
-    justify-content: center;
   }
   
   /* Declare heights because of positioning of img element */
@@ -32,8 +25,8 @@ body {
   }
   .carousel-item > img {
     position: absolute;
-    filter: blur(4px);
-  -webkit-filter: blur(4px);
+    /* filter: blur(4px);
+  -webkit-filter: blur(4px); */
     top: 0;
     left: 0;
     min-width: 100%;
@@ -41,6 +34,11 @@ body {
     
   }
 
+  .form-inline{
+    padding-bottom: 14rem;
+    /* display: flex;
+    justify-content: center; */
+  }
   
   
   /* MARKETING CONTENT
@@ -58,6 +56,7 @@ body {
     margin-right: .75rem;
     margin-left: .75rem;
   }
+
   .featurette-divider {
     margin: 5rem 0; /* Space out the Bootstrap <hr> more */
   }
@@ -75,4 +74,7 @@ body {
      box-shadow: 0 .25rem .75rem rgba(165, 33, 33, 0.05); 
     }
   
+    /* SIGNUP
+  -------------------------------------------------- */
+
   
