@@ -19,9 +19,14 @@
 
   app.get('/signup', (req, res) => {
     res.render('SignUp.ejs');
+  }); // add }); because of SyntaxError: Unexpected end of input
 
   app.get('/designer', (req, res) => {
     res.render('designer.ejs');
+  });
+
+  app.get('/editDesignerProfile', (req, res) => {
+    res.render('editProfile.ejs');
   });
 
 
