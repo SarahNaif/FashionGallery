@@ -1,4 +1,13 @@
-<main style="margin-top: 4em;" role="main">
+<head>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/star.css">
+</head>
+
+<!-- background image -->
+<main role="main">
+
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -24,7 +33,7 @@
                         <div class="profile-contant">
                             <div>
                                 <h1 class="profile-user-name">janedoe_</h1>
-                                <button href="editDesignerProfile" class="btn profile-edit-btn">Edit Profile</button>
+                                <button class="btn profile-edit-btn">Edit Profile</button>
                             </div>
                 
                             <div class="profile-stats">
@@ -94,66 +103,35 @@
                 <div class="row review">
                     <div class="row">
                         <div class="col-lg-9 review-header">
-                            <h2>Designer</h2>
+                            <h3>How Did You Find Designer?</h3>
                         </div>
                         <div class="col-lg-3">
                             <div class="ratingBig">
                                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                            </div>
-                            <button type="button" class="btn btn-dark add-review left">Add review</button>
-                           
+                            </div>                           
                         </div>
+
                     </div>
-                        
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>                      
+                    <div class="row">
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label"> <h5>Any Comment?</h5></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                        <button type="button" class="btn btn-dark add-review">Add review</button>
+
+                    </div>
+
                 </div>
             </div>
     </div>
-
-    <!-- single post -->
-    <!-- add class collapse -->
-    <div class="container " id="singlePost">
-        <div class="post">
-            <div class="post-image">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                    alt="">
-            </div>
-
-            <div class="post-description">
-                <h2>Designer</h2>
-                <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
-            </div>
-        </div>
     </div>
 
-
 </main>
-
+<!-- tab JavaScript plugin. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
