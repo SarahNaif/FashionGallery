@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-
     "bcrypt": "^5.0.0",
     "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
@@ -20,11 +20,12 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.9.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.11.9"
+    "mongoose": "^5.11.9",
+    "multer": "^1.4.2"
   },
   "repository": {
     "type": "git",
     "url": "https://git.generalassemb.ly/Omega/FashionGallery.git"
   },
-  "description": ""
+  "description": "Fashion Gallery is a fashion broker website that connect the fashion designers from all around the world with their fans. Fans can search about their favourite designers and see their new work. They can view their contact info and write comments. Each designer will have a page for showing their work, the comments they receive and rate."
 }

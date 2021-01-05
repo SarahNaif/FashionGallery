@@ -1,0 +1,30 @@
+
+<div class="featurette-divider">
+<div class="container marketing">
+    <h2 class="mb-4">Edit Post</h2>
+
+    <form action="/post/update/<%=post._id%>?_method=put" method="POST" enctype="multipart/form-data"  class="row g-3">
+
+        <div class="form-floating mb-4">
+            <input type="Design" class="form-control" id="floatingInput" placeholder="Design" name="title" value="<%=post.title%>">
+            <label for="floatingInput">Title</label>
+        </div>
+    
+        <div class="form-floating mb-4">
+            <img src="<%=post.image%>" alt="">
+            <input type="file" class="form-control" id="floatingImage" placeholder="Image" name="image">
+            <label for="floatingImage">Upload a new image</label>
+        </div>
+        <div class="form-floating mb-4">
+            <textarea class="form-control" placeholder="content" id="floatingTextarea2"
+                style="height: 100px"><%=post.content%></textarea>
+            <label for="floatingTextarea2">content</label>
+        </div>
+      
+        <div class="col-12">
+
+            <input type="submit" value="Edit Post" class="btn btn-secondary form__input__submit">
+        </div>
+    </div>
+    </form>
+</div>
