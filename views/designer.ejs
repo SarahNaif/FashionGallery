@@ -1,3 +1,8 @@
+<head>
+
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
 <main style="margin-top: 4em;" role="main">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -17,143 +22,357 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="container">
-                    <div class="profile">     <!-- profile view .get start here  -->
+                    <div class="profile">
+                        <!-- profile view .get start here  -->
                         <div class="profile-image">
                             <img class="rounded-circle" src="<%= designer.img %>" alt="">
                         </div>
+
+                        <!-- desiner profile -->
                         <div class="profile-contant">
                             <div>
-                                <h1 class="profile-user-name"><%= designer.username %> </h1>
-                                <button href="editDesignerProfile" class="btn profile-edit-btn">Edit Profile</button>
+                                <h1 class="profile-user-name">
+                                    <%= designer.username %>
+                                </h1>
+                                <!-- Edit desiner profile -->
+                                <!-- ==========================importent Q -->
+                                <!-- href="editDesignerProfile"  -->
+                                <!-- ================================ -->
+                                <button href="editDesignerProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Edit
+                                    Profile</button>
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="exampleModalLabel">Edit Profile</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/ ?_method=put" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="First Name"
+                                                            class="form-control">
+                                                        <input type="text" placeholder="Last Name" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Username" class="form-control">
+                                                        <input type="text" placeholder="phone" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" placeholder="Email Address"
+                                                            class="form-control">
+                                                        <input type="password" placeholder="Password"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="city" class="form-control">
+                                                        <input type="text" placeholder="address" class="form-control">
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <input type="date" placeholder="dateOfBirth"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <select name="" id="" class="form-control ">
+                                                            <option value="Gender" disabled selected>gander</option>
+                                                            <option value="designer">Female</option>
+                                                            <option value="fan">male</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <input type="file" placeholder="image" class="form-control">
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="bio"
+                                                            id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">Bio</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <input type="submit" value="Edit" class="btn btn-dark btn-custom"
+                                                    style="float: right;">
+                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                    data-bs-dismiss="modal">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End of profile and edit profile designer-->
+
+
                             </div>
-                
+
                             <div class="profile-stats">
                                 <ul>
-                                    <li><span class="profile-stat-count"><%= designer.numpost %> </span> posts</li>
-                                    <li><span class="profile-stat-count"><%= designer.followers %></span> followers</li>
-                                    <li><span class="profile-stat-count"><%= designer.numfollowing %></span> following</li>
+                                    <li><span class="profile-stat-count">
+                                            <%= designer.numpost %>
+                                        </span> posts</li>
+                                    <li><span class="profile-stat-count">
+                                            <%= designer.followers %>
+                                        </span> followers</li>
+                                    <li><span class="profile-stat-count">
+                                            <%= designer.numfollowing %>
+                                        </span> following</li>
                                 </ul>
                             </div>
-                
+
                             <div class="profile-bio">
-                                <p><span class="profile-real-name"><%= designer.namefull %></span></p>
-                                <p><%= designer.bio %> 📷✈️🏕️</p>
+                                <p><span class="profile-real-name">
+                                        <%= designer.namefull %>
+                                    </span></p>
+                                <p>
+                                    <%= designer.bio %> 📷✈️🏕️
+                                </p>
                             </div>
-                        </div>            
+                        </div>
                     </div>
-<!-- profile view .get start here  -->
+                    <!-- profile view .get start here  -->
                 </div>
             </div>
             <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
                 <div class="container">
 
-                    <!--  -->
+
+
+
+                    <!--Gallery with popup Edit and Delete button    -->
                     <div class="row">
+                        <div class="container marketing">
+                            <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#NewModal"
+                                data-bs-whatever="@new">New
+                                Post</button>
+                            <div class="modal fade" id="NewModal" tabindex="-1" aria-labelledby="NewModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="NewModalLabel">New Post</h3>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/newpost" method="POST">
 
-                        <div class="col-lg-4">
-                            <div class="bg-white rounded shadow-sm"><img
-                                    src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                                    alt="" class="img-fluid card-img-top">
-                                <div class="p-4">
-                                    <h5> <a href="#" class="text-dark">Designer</a></h5>
-                                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit</p>
+
+
+
+                                                <div class="form-floating mb-3">
+                                                    <input type="Design" class="form-control" id="floatingInput"
+                                                        placeholder="Design">
+                                                    <label for="floatingInput">Design</label>
+                                                </div>
+
+                                                <div class="form-floating mb-3">
+                                                    <input type="file" class="form-control" placeholder="Image"
+                                                        name="image">
+
+                                                </div>
+
+                                                <div class="form-floating mb-3">
+                                                    <textarea class="form-control" placeholder="content"
+                                                        id="floatingTextarea2" style="height: 100px"></textarea>
+                                                    <label for="floatingTextarea2">content</label>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <input type="submit" value="Edit" class="btn btn-dark btn-custom"
+                                                        style="float: right;">
+                                                    <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                        data-bs-dismiss="modal">
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-lg-4">
-                            <div class="bg-white rounded shadow-sm"><img
-                                    src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                                    alt="" class="img-fluid card-img-top">
-                                <div class="p-4">
-                                    <h5> <a href="#" class="text-dark">Designer</a></h5>
-                                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit</p>
+                    <div class="col-lg-4">
+                        <div class="bg-white rounded shadow-sm"><img
+                                src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                                alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Designer</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit</p>
+                                <div class="button1 d-grid gap-2 d-md-flex justify-content-md-end w-50">
+                                    <button class="btn btn-outline-dark " data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Edit</button>
+                                    <button class="btn btn-outline-dark">Delete</button>
+                                </div>
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="exampleModalLabel">Edit Post</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/edit ?_method=put" method="POST" class="row g-3">
+
+
+
+
+                                                    <div class="form-floating mb-3">
+                                                        <input type="Design" class="form-control" id="floatingInput"
+                                                            placeholder="Design">
+                                                        <label for="floatingInput">Design</label>
+                                                    </div>
+
+                                                    <div class="form-floating mb-3">
+                                                        <input type="file" class="form-control" placeholder="Image"
+                                                            name="image">
+
+                                                    </div>
+
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="content"
+                                                            id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">content</label>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <input type="submit" value="Edit"
+                                                            class="btn btn-dark btn-custom" style="float: right;">
+                                                        <input type="submit" value="close"
+                                                            class="btn btn-dark btn-custom" data-bs-dismiss="modal">
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-4">
-                            <div class="bg-white rounded shadow-sm"><img
-                                    src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                                    alt="" class="img-fluid card-img-top">
-                                <div class="p-4">
-                                    <h5> <a href="#" class="text-dark">Designer</a></h5>
-                                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit</p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                 </div>
-            </div>
-            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                <div class="row review">
-                    <div class="row">
-                        <div class="col-lg-9 review-header">
-                            <h2>Designer</h2>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="ratingBig">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                            </div>
-                            <button type="button" class="btn btn-dark add-review left">Add review</button>
-                           
-                        </div>
-                    </div>
-                        
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>                      
-                </div>
-            </div>
-    </div>
 
-    <!-- single post -->
-    <!-- add class collapse -->
-    <div class="container " id="singlePost">
-        <div class="post">
-            <div class="post-image">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                    alt="">
-            </div>
-
-            <div class="post-description">
-                <h2>Designer</h2>
-                <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
             </div>
         </div>
-    </div>
+
+        <!-- Review -->
+        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            <div class="row review">
+
+                <div class="row">
+                    <div class="col-lg-9 review-header">
+
+
+                        <h2>Designer</h2>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="ratingBig">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                        <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            data-bs-whatever="@new">Review</button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Write a review</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/new" method="POST">
+
+                                            <div class="row review">
+                                                <div class="row">
+                                                    <div class="col-lg-9 review-header">
+                                                        <h6>How Did You Find Designer?</h6>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="ratingBig">
+                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <br>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3">
+
+                                                        <div class="form-floating mb-3">
+                                                            <textarea class="form-control" placeholder="content"
+                                                                id="floatingTextarea2" style="height: 100px"
+                                                                rows="3"></textarea>
+                                                            <label for="floatingTextarea2">Any Comment?</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <input type="submit" value="Post" class="btn btn-dark btn-custom"
+                                                    style="float: right;">
+                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                    data-bs-dismiss="modal">
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="rating">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            <h5 class="card-title">Someone...</h5>
+                        </div>
+                        <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
+                            officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum
+                            obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+        <!-- single post -->
+        <!-- add class collapse -->
+        <div class="container " id="singlePost">
+            <div class="post">
+                <div class="post-image">
+                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                        alt="">
+                </div>
+
+                <div class="post-description">
+                    <h2>Designer</h2>
+                    <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
+                </div>
+            </div>
+        </div>
 
 
 </main>
-

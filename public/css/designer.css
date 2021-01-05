@@ -1,5 +1,4 @@
 
-/* profile section */
 .profile {
     display: flex;
     padding: 5rem 0;
@@ -70,13 +69,6 @@
     font-weight: 600;
 }
 
-
-
-
-
-/* post section */
-
-
 .post {
     display: flex;
     padding: 5rem 0;
@@ -100,4 +92,4 @@
 .post-description {
     float: left;
     width: 100;
-}
+} 
