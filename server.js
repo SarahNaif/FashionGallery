@@ -10,8 +10,13 @@ const Fan = require('./models/fan')
 
 const mongoose = require("mongoose");
 
-const validator = require('express-validator')
 
+const session = require("express-session");
+const { find } = require("./models/designer");
+const mongoSessisonStore = require("connect-mongo")(session);
+
+const validator = require('express-validator')
+// move to routes
 const methodOverride = require("method-override");
 const expressLayouts = require('express-ejs-layouts');
 
@@ -24,11 +29,6 @@ app.use(express.static("public"));
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 let PORT = process.env.PORT
-
-
-const session = require("express-session");
-const { find } = require("./models/designer");
-const mongoSessisonStore = require("connect-mongo")(session);
 
 // set the session 
 app.use(session({
@@ -45,6 +45,7 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useU
   console.log("mongoDb is connect")
 })
 
+// related to search
 app.use(require('./controllers/designer'))
 
 app.get('/', (req, res) => {
@@ -57,6 +58,7 @@ app.get('/', (req, res) => {
 
 });
 
+// move to designer 
 //======================================
 // search for designer
 //======================================

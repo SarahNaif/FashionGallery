@@ -39,7 +39,13 @@ router.get('/Designer/new', (req, res) => {
 // get 
 // find by id 
 // render + data to send to the web page
-
+router.get("/designer/:id", (req,res)=>{
+  Designer.findById(req.params.id)
+  .then((designers)=>{
+    res.render("editProfile",{designer : designers})
+  })
+  .catch(err => console.log(err));
+})
 // podile.ejs
 // export routes
 module.exports = router
