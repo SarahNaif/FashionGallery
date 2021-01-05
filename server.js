@@ -32,11 +32,10 @@ let PORT = process.env.PORT
 app.get('/', (req, res) => {
   res.render('index.ejs');
 });
- 
+
+// will be removed
 app.get('/uploadfile', (req, res) => {
   res.render('file.ejs');
-});
-
 // It's very crucial that the file name matches the name attribute in your html
 app.post('/uploadfile', upload.single('file-to-upload'), (req, res) => {
   console.log(req.file)

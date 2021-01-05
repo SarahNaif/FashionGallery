@@ -17,31 +17,31 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="container">
-                    <div class="profile">
+                    <div class="profile">     <!-- profile view .get start here  -->
                         <div class="profile-image">
-                            <img class="rounded-circle" src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+                            <img class="rounded-circle" src="<%= designer.img %>" alt="">
                         </div>
                         <div class="profile-contant">
                             <div>
-                                <h1 class="profile-user-name">janedoe_</h1>
+                                <h1 class="profile-user-name"><%= designer.username %> </h1>
                                 <button href="editDesignerProfile" class="btn profile-edit-btn">Edit Profile</button>
                             </div>
                 
                             <div class="profile-stats">
                                 <ul>
-                                    <li><span class="profile-stat-count">164</span> posts</li>
-                                    <li><span class="profile-stat-count">188</span> followers</li>
-                                    <li><span class="profile-stat-count">206</span> following</li>
+                                    <li><span class="profile-stat-count"><%= designer.numpost %> </span> posts</li>
+                                    <li><span class="profile-stat-count"><%= designer.followers %></span> followers</li>
+                                    <li><span class="profile-stat-count"><%= designer.numfollowing %></span> following</li>
                                 </ul>
                             </div>
                 
                             <div class="profile-bio">
-                                <p><span class="profile-real-name">Jane Doe</span></p>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+                                <p><span class="profile-real-name"><%= designer.namefull %></span></p>
+                                <p><%= designer.bio %> 📷✈️🏕️</p>
                             </div>
                         </div>            
                     </div>
-
+<!-- profile view .get start here  -->
                 </div>
             </div>
             <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
@@ -90,7 +90,49 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-        </div>
+                <div class="row review">
+                    <div class="row">
+                        <div class="col-lg-9 review-header">
+                            <h2>Designer</h2>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="ratingBig">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            </div>
+                            <button type="button" class="btn btn-dark add-review left">Add review</button>
+                           
+                        </div>
+                    </div>
+                        
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="rating">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                <h5 class="card-title">Someone...</h5>
+                                </div>
+                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                            <div class="rating">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                <h5 class="card-title">Someone...</h5>
+                                </div>
+                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                            <div class="rating">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                <h5 class="card-title">Someone...</h5>
+                                </div>
+                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+                        </div>
+                      </div>                      
+                </div>
+            </div>
     </div>
 
     <!-- single post -->
