@@ -94,68 +94,14 @@ app.post("/", (req, res) => {
 
 });
 
-app.get('/designer', (req, res) => {
-
-  Comment.find()
-    .populate('Designer')
-    .populate('Fan')
-    .then(comment => {
-      Designer.find()
-        .then(designer => {
-
-          console.log("the data", comment, "the other data", designer)
-          res.render('designer.ejs', { comment, designer: designer });
-
-        })
-
-    }).catch(err => console.log(err));
-});
-
-
-//======================================
-// show single designer
-//======================================
-app.get('/designer/:id', (req, res) => {
-  var id = req.params.id;
-
-  Comment.findById(id)
-    .populate('Designer')
-    .populate('Fan')
-    .then(comment => {
-      console.log("the data", comment)
-      res.render('designer.ejs', { comment });
-    }).catch(err => console.log(err));
-
-});
-
-
-//======================================
-// add commend form fan
-//======================================
-
-app.post('/designer', (req, res) => {
-  console.log("the commend: ", req.body.commend)
-
-  let newCommend = {
-    content: req.body.commend
-    // ,
-    // fan: req.session.userId,
-    // designer: 
-  }
-
-  Comment.create(newCommend)
-    .then(commend => {
-      console.log("creating commend: ", Comment)
-      res.redirect('/designer', { commend })
-    }).catch(err => console.log(err));
-
-});
 
 
 
 // will be removed
 app.get('/uploadfile', (req, res) => {
   res.render('file.ejs');
+})// add }) to fix SyntaxError: Unexpected end of input
+
 // It's very crucial that the file name matches the name attribute in your html
 app.post('/uploadfile', upload.single('file-to-upload'), (req, res) => {
   console.log(req.file)
@@ -166,10 +112,6 @@ app.post('/uploadfile', upload.single('file-to-upload'), (req, res) => {
 //   res.render('designer.ejs');
 // });
 
-//connect to MongoDb 
-mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-  console.log("mongoDb is connect")
-  })
   
 app.use(require('./controllers/designer'))
 app.use(require('./controllers/post'))

@@ -34,15 +34,15 @@ router.use(session({
 //======================================
 // Show all posts
 //======================================
-router.get('/designer', (req, res)=> {
-    Post.find()
-    .populate('cars')
-    .then((posts)=>{
-        console.log(posts)
-        res.render('designer.ejs', {posts})
-    })
-    .catch(err => console.log(err))
-})
+// router.get('/designer', (req, res)=> {
+//     Post.find()
+//     .populate('cars')
+//     .then((posts)=>{
+//         console.log(posts)
+//         res.render('designer.ejs', {posts})
+//     })
+//     .catch(err => console.log(err))
+// })
   
 
 //======================================
@@ -64,7 +64,9 @@ router.post("/Post/new", upload.single('image'),(req, res) => {
     console.log('newpost:', newPost)
     Post.create(newPost)
     .then(post => {
+        res.redirect('/designer')
         console.log(post)
+
     })
     .catch(err => console.log(err))
   });
