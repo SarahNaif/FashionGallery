@@ -1,0 +1,179 @@
+<div class="wrapper">
+  <main id="main">
+
+    <div class="row">
+      <div class="col-lg-9 review-header">
+
+
+        <h2>Designer</h2>
+      </div>
+      <div class="col-lg-3">
+        <div class="ratingBig">
+          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </div>
+        <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          data-bs-whatever="@new">Review</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Write a review</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/new" method="POST">
+
+                  <div class="row review">
+                    <div class="row">
+                      <div class="col-lg-9 review-header">
+                        <h6>How Did You Find Designer?</h6>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="ratingBig">
+                          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <br>
+                    </div>
+                    <div class="row">
+                      <div class="mb-3">
+
+                        <div class="form-floating mb-3">
+                          <textarea class="form-control" placeholder="content" id="floatingTextarea2"
+                            style="height: 100px" rows="3"></textarea>
+                          <label for="floatingTextarea2">Any Comment?</label>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+
+                    <input type="submit" value="Post" class="btn btn-dark btn-custom" style="float: right;">
+                    <input type="submit" value="close" class="btn btn-dark btn-custom" data-bs-dismiss="modal">
+
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            <h5 class="card-title">Someone...</h5>
+          </div>
+          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
+            officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum
+            obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+        </div>
+      </div>
+
+<!-- 
+    </head>
+
+    <button  class="btn profile-edit-btn" data-bs-toggle="modal"
+    data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Edit
+    Profile</button>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Edit Profile</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+  
+                  <div class="form-group">
+                      <input type="text" placeholder="First Name" class="form-control">
+                      <input type="text" placeholder="Last Name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <input type="text" placeholder="Username" class="form-control">
+                      <input type="text" placeholder="phone" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <input type="email" placeholder="Email Address" class="form-control"> 
+                      <input type="password" placeholder="Password" class="form-control">
+                  </div>
+                  <div class="form-group">
+                        <input type="text" placeholder="city" class="form-control">
+                      <input type="text" placeholder="address" class="form-control">
+                  </div>
+                  <div class="form-wrapper">
+                      <input type="date" placeholder="dateOfBirth" class="form-control">
+                  </div>
+                  <div class="form-wrapper">
+                      <select name="" id="" class="form-control ">
+                        <option value="Gender" disabled selected>gander</option>
+                        <option value="designer">Female</option>
+                        <option value="fan">male</option>
+                      </select>
+                    </div>
+                    <div class="form-wrapper">
+                      <input type="file" placeholder="image" class="form-control">
+                  </div>
+                  <div class="form-floating mb-3">
+                      <textarea class="form-control" placeholder="bio" id="floatingTextarea2" style="height: 100px"></textarea>
+                      <label for="floatingTextarea2">Bio</label>
+                  </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+             
+               <input type="submit" value="Edit" class="btn btn-dark btn-custom" style="float: right;">
+               <input type="submit" value="close" class="btn btn-dark btn-custom" data-bs-dismiss="modal">
+  
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+
+
+
+
+
+      <!-- <div id="col-two">
+      <section id="info">
+
+        <h3>Edit Profile</h3>
+
+        <div class="form-group">
+          <input type="text" placeholder="First Name" class="form-control">
+          <input type="text" placeholder="Last Name" class="form-control">
+        </div>
+        <div class="form-wrapper">
+          <input type="text" placeholder="Username" class="form-control">
+          <i></i>
+        </div>
+        <div class="form-wrapper">
+          <input type="text" placeholder="Email Address" class="form-control">
+          <i></i>
+        </div>
+        <div class="form-wrapper">
+          <input type="password" placeholder="Password" class="form-control">
+          <i></i>
+        </div>
+        <div class="form-wrapper">
+
+          <input type="submit" value="Edit" class="btn btn-dark btn-custom" style="float: right;">
+        </div>
+
+
+        </form>
+
+      </section>
+
+    </div>
+  </main>
+</div> -->

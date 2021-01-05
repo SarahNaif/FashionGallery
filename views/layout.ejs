@@ -24,18 +24,19 @@
   <!-- navbar fixed -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="/">FashionGallery</a>
-   
+
     <!-- tricky method to center navbar by add anthore collapse navbar -->
     <div class="collapse navbar-collapse"></div>
-    <!--center navbar  --> 
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/designer">Designers <span class="sr-only">(current)</span></a>
+      <!--center navbar  -->
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+          <a class="nav-link" href="/designer">Designers <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
@@ -43,8 +44,9 @@
 
       </ul>
 
-
-      <ul class="navbar-nav ">
+ <!-- tricky method to center navbar by add anthore collapse navbar -->
+ 
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="/signup">Signup/login</a>
         </li>
@@ -60,15 +62,16 @@
           </ul>
         </li>
       </ul>
-
-
-
-
-
-
-
-      
+           
     </div>
+
+
+
+
+
+
+
+
 
   </nav>
   <%- body %>

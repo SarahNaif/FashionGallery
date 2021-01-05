@@ -1,4 +1,8 @@
+<head>
 
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
 <main style="margin-top: 4em;" role="main">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -21,17 +25,88 @@
                     <div class="profile">
                         <!-- profile view .get start here  -->
                         <div class="profile-image">
-                            <img class="rounded-circle"
-                                src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-                                alt="">
                             <img class="rounded-circle" src="<%= designer.img %>" alt="">
                         </div>
+
+                        <!-- desiner profile -->
                         <div class="profile-contant">
                             <div>
                                 <h1 class="profile-user-name">
                                     <%= designer.username %>
                                 </h1>
-                                <button href="editDesignerProfile" class="btn profile-edit-btn">Edit Profile</button>
+                                <!-- Edit desiner profile -->
+                                <!-- ==========================importent Q -->
+                                <!-- href="editDesignerProfile"  -->
+                                <!-- ================================ -->
+                                <button href="editDesignerProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
+                                    data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
+                                    Profile</button>
+
+                                <div class="modal fade" id="EditProfileModal" tabindex="-1"
+                                    aria-labelledby="EditProfileModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="EditProfileModalLabel">Edit Profile</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/ ?_method=put" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="First Name"
+                                                            class="form-control">
+                                                        <input type="text" placeholder="Last Name" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Username" class="form-control">
+                                                        <input type="text" placeholder="phone" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" placeholder="Email Address"
+                                                            class="form-control">
+                                                        <input type="password" placeholder="Password"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="city" class="form-control">
+                                                        <input type="text" placeholder="address" class="form-control">
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <input type="date" placeholder="dateOfBirth"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <select name="" id="" class="form-control ">
+                                                            <option value="Gender" disabled selected>gander</option>
+                                                            <option value="designer">Female</option>
+                                                            <option value="fan">male</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <input type="file" placeholder="image" class="form-control">
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="bio"
+                                                            id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">Bio</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <input type="submit" value="Edit" class="btn btn-dark btn-custom"
+                                                    style="float: right;">
+                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                    data-bs-dismiss="modal">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End of profile and edit profile designer-->
+
+
                             </div>
 
                             <div class="profile-stats">
@@ -64,116 +139,236 @@
             <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
                 <div class="container">
 
-                    <!--  -->
+
+
+
+                    <!--Gallery with popup Edit and Delete button    -->
                     <div class="row">
-                        <% post.forEach(elem=>{ %>
-                            <div class="col-lg-4">
-                                <div class="bg-white rounded shadow-sm"><img src="<%=elem.image%>" alt=""
-                                        class="img-fluid card-img-top">
-                                    <div class="p-4">
-                                        <h5> <a href="#" class="text-dark">
-                                                <%=elem.title%>
-                                            </a></h5>
-                                        <p class="small text-muted mb-0"></p>
+                        <div class="container marketing">
+                            <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#NewModal"
+                                data-bs-whatever="@new">New
+                                Post</button>
+                            <div class="modal fade" id="NewModal" tabindex="-1" aria-labelledby="NewModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="NewModalLabel">New Post</h3>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/newpost" method="POST">
+
+
+
+
+                                                <div class="form-floating mb-3">
+                                                    <input type="Design" class="form-control" id="floatingInput"
+                                                        placeholder="Design">
+                                                    <label for="floatingInput">Design</label>
+                                                </div>
+
+                                                <div class="form-floating mb-3">
+                                                    <input type="file" class="form-control" placeholder="Image"
+                                                        name="image">
+
+                                                </div>
+
+                                                <div class="form-floating mb-3">
+                                                    <textarea class="form-control" placeholder="content"
+                                                        id="floatingTextarea2" style="height: 100px"></textarea>
+                                                    <label for="floatingTextarea2">content</label>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <input type="submit" value="Edit" class="btn btn-dark btn-custom"
+                                                        style="float: right;">
+                                                    <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                        data-bs-dismiss="modal">
+
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <% }) %>
+                        </div>
+                    </div>
+
+                    <!-- Edit post -->
+                    <div class="col-lg-4">
+
+
+                        <div class="bg-white rounded shadow-sm">
+
+
+                            <a data-toggle="collapse" href="#singlePost" role="button" aria-expanded="false"
+                                aria-controls="singlePost">link</a>
+                                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                                    alt="" class="img-fluid card-img-top">
+                            
+
+
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Designer</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit</p>
+                                <div class="button1 d-grid gap-2 d-md-flex justify-content-md-end w-50">
+                                    <button class="btn btn-outline-dark " data-bs-toggle="modal"
+                                        data-bs-target="#EditPostModal" data-bs-whatever="@getbootstrap">Edit</button>
+                                    <button class="btn btn-outline-dark">Delete</button>
+                                </div>
+
+                                <div class="modal fade" id="EditPostModal" tabindex="-1"
+                                    aria-labelledby="EditPostModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="EditPostModalLabel">Edit Post</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/edit ?_method=put" method="POST" class="row g-3">
+
+
+
+
+                                                    <div class="form-floating mb-3">
+                                                        <input type="Design" class="form-control" id="floatingInput"
+                                                            placeholder="Design">
+                                                        <label for="floatingInput">Design</label>
+                                                    </div>
+
+                                                    <div class="form-floating mb-3">
+                                                        <input type="file" class="form-control" placeholder="Image"
+                                                            name="image">
+
+                                                    </div>
+
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="content"
+                                                            id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">content</label>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <input type="submit" value="Edit"
+                                                            class="btn btn-dark btn-custom" style="float: right;">
+                                                        <input type="submit" value="close"
+                                                            class="btn btn-dark btn-custom" data-bs-dismiss="modal">
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+
             </div>
-            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                <div class="row review">
-                    <div class="row">
-                        <div class="col-lg-9 review-header">
-                            <h2>Designer</h2>
+        </div>
+
+        <!-- Review -->
+        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            <div class="row review">
+
+                <div class="row">
+                    <div class="col-lg-9 review-header">
+
+
+                        <h2>Designer</h2>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="ratingBig">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="ratingBig">
-                                <!-- <div id="status"></div>
-<form id="ratingForm">
-        <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 stars</label>
-        <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 stars</label>
-        <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 stars</label>
-        <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 stars</label>
-        <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
+                        <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#ReviewModal"
+                            data-bs-whatever="@new">Review</button>
 
-        <button class="submit">Submit</button>
-</form>
+                        <div class="modal fade" id="ReviewModal" tabindex="-1" aria-labelledby="ReviewModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="ReviewModalLabel">Write a review</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/new" method="POST">
 
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span> -->
-<style>
-    #rating { font-size: 0; }
-#rating span { font-size: 40px; }
-#rating span::before { content: "☆"; }
-#rating span.active::before {content: "★"; }
-#rating span:hover { cursor: pointer; }
-</style>
-<div id="status"></div>
-                                <div id='rating'>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                  </div>
+                                            <div class="row review">
+                                                <div class="row">
+                                                    <div class="col-lg-9 review-header">
+                                                        <h6>How Did You Find Designer?</h6>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="ratingBig">
+                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                        </div>
+                                                    </div>
 
+                                                </div>
+                                                <div class="row">
+                                                    <br>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3">
+
+                                                        <div class="form-floating mb-3">
+                                                            <textarea class="form-control" placeholder="content"
+                                                                id="floatingTextarea2" style="height: 100px"
+                                                                rows="3"></textarea>
+                                                            <label for="floatingTextarea2">Any Comment?</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <input type="submit" value="Post" class="btn btn-dark btn-custom"
+                                                    style="float: right;">
+                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                    data-bs-dismiss="modal">
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <button type="button" class="btn btn-dark add-review left">Add review</button>
-
                         </div>
                     </div>
 
-                    <!--add comment form  -->
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="/designer" method="POST">
-                                <div class="rating">
-                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                    <h5 class="card-title">
-
-                                    </h5>
-                                </div>
-                                <textarea name="commend" placeholder="Write your commend..."></textarea>
-
-                                <button type="submit">commend</button>
-
-                            </form>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="rating">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            <h5 class="card-title">Someone...</h5>
                         </div>
+                        <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
+                            officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum
+                            obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
                     </div>
-
-                    <% comment.forEach(ele=> { %>
-
-                        <div class="card">
-                            <div class="card-body">
-
-                                <div class="rating">
-                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                    <h5 class="card-title">
-                                        <%= ele.fan %>
-                                    </h5>
-                                </div>
-
-                                <p class="card-text">
-                                    <%= ele.content %>
-                                </p>
-
-
-
-
-                            </div>
-                        </div>
-
-                        <% }); %>
-
                 </div>
             </div>
         </div>
 
+
+
+
         <!-- single post -->
         <!-- add class collapse -->
-        <!-- <div class="container " id="singlePost">
+        <div class="container collapse" id="singlePost">
             <div class="post">
                 <div class="post-image">
                     <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
@@ -187,29 +382,7 @@
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
                 </div>
             </div>
-        </div> -->
+        </div>
 
 
 </main>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script>
-   
-    // $("form#ratingForm").submit(function(e) {
-    //     e.preventDefault();
-    //     if ($("#ratingForm :radio:checked").length == 0) {
-    //         $('#status').html("nothing checked");
-    //         return false;
-    //     } else {
-    //         $('#status').html( 'You picked ' + $('input:radio[name=rating]:checked').val() );
-    //     }
-    // });
-
-    document.querySelector('#rating').addEventListener('click', function (e) {
-    let action = 'add';
-    for (const span of this.children) {
-        span.classList[action]('active');
-        if (span === e.target) action = 'remove';
-    }
-});
-
-</script>

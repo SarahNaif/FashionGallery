@@ -1,0 +1,119 @@
+<head>
+
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
+<hr>
+
+<div class="container marketing">
+    <button  class="btn profile-edit-btn" data-bs-toggle="modal"
+    data-bs-target="#NewModal" data-bs-whatever="@new">New
+    Post</button>
+    <div class="modal fade" id="NewModal" tabindex="-1" aria-labelledby="NewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="NewModalLabel">New Post</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/newpost" method="POST">
+
+
+
+
+                        <div class="form-floating mb-3">
+                            <input type="Design" class="form-control" id="floatingInput" placeholder="Design">
+                            <label for="floatingInput">Design</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="file" class="form-control" placeholder="Image" name="image">
+
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" placeholder="content" id="floatingTextarea2"
+                                style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">content</label>
+                        </div>
+                        <div class="modal-footer">
+
+                            <input type="submit" value="Edit" class="btn btn-dark btn-custom" style="float: right;">
+                            <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                data-bs-dismiss="modal">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<div class="col-lg-4">
+
+
+    <div class="bg-white rounded shadow-sm"><img
+            src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+            alt="" class="img-fluid card-img-top">
+        <div class="p-4">
+            <h5> <a href="#" class="text-dark">Designer</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit</p>
+
+
+            <div class="button1 d-grid gap-2 d-md-flex justify-content-md-end w-50">
+                <button class="btn btn-outline-dark " data-bs-toggle="modal" data-bs-target="#EditModal"
+                    data-bs-whatever="@Edit">Edit post</button>
+                <button class="btn btn-outline-dark">Delete</button>
+            </div>
+
+            <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="EditModalLabel">Edit Post</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action=" ?_method=put" method="POST" class="row g-3">
+
+
+
+
+                                <div class="form-floating mb-3">
+                                    <input type="Design" class="form-control" id="floatingInput" placeholder="Design">
+                                    <label for="floatingInput">Design</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="file" class="form-control" placeholder="Image" name="image">
+
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="content" id="floatingTextarea2"
+                                        style="height: 100px"></textarea>
+                                    <label for="floatingTextarea2">content</label>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <input type="submit" value="Edit" class="btn btn-dark btn-custom"
+                                        style="float: right;">
+                                    <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                        data-bs-dismiss="modal">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>

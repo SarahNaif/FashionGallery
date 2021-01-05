@@ -1,0 +1,45 @@
+<div class="featurette-divider">
+    <div class="container marketing">
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">New Post</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/newpost" method="POST">
+
+
+
+
+                            <div class="form-floating mb-3">
+                                <input type="Design" class="form-control" id="floatingInput" placeholder="Design">
+                                <label for="floatingInput">Design</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="file" class="form-control" placeholder="Image" name="image">
+
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="content" id="floatingTextarea2"
+                                    style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">content</label>
+                            </div>
+                            <div class="modal-footer">
+
+                                <input type="submit" value="Edit" class="btn btn-dark btn-custom" style="float: right;">
+                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                    data-bs-dismiss="modal">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
