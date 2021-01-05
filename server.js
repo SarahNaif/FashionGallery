@@ -1,4 +1,16 @@
 const express = require("express");
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now()+'.png')
+  }
+})
+
+var upload = multer({ storage: storage })
+
 const app = express();
 require('dotenv').config()
 
@@ -141,5 +153,26 @@ app.post('/designer', (req, res) => {
 
 
 
+// will be removed
+app.get('/uploadfile', (req, res) => {
+  res.render('file.ejs');
+// It's very crucial that the file name matches the name attribute in your html
+app.post('/uploadfile', upload.single('file-to-upload'), (req, res) => {
+  console.log(req.file)
+  res.redirect('/');
+});
+
+// app.get('/designer', (req, res) => {
+//   res.render('designer.ejs');
+// });
+
+//connect to MongoDb 
+mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+  console.log("mongoDb is connect")
+  })
+  
+app.use(require('./controllers/designer'))
+app.use(require('./controllers/post'))
+  
 // CONNECTIONS
 app.listen(PORT, () => console.log(`server is running ${PORT}`));

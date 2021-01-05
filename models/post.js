@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const postScema = new mongoose.Schema({
-    content :String ,
-    img :String ,
-    description: String, 
-    details : String,
+    title :String ,
+    image :String ,
+    content: String, 
+    // details : String,
     // one to many 
     user :{type : mongoose.Schema.Types.ObjectId , ref : 'user' }
     
