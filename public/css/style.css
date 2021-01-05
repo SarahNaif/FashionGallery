@@ -32,8 +32,6 @@ body {
   }
   .carousel-item > img {
     position: absolute;
-    /* filter: blur(4px); */
-  /* -webkit-filter: blur(4px); */
     top: 0;
     left: 0;
     min-width: 100%;
@@ -95,4 +93,10 @@ body {
 
 
 }
-  
+
+
+
+.center{
+    display: flex;
+  justify-content: center;
+}

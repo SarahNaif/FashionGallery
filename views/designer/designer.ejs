@@ -1,10 +1,9 @@
 <head>
-
     <link rel="stylesheet" href="css/signup.css">
-
-</head>
+  </head>
+  
 <main style="margin-top: 4em;" role="main">
-    <div class="container">
+    <div class="container marketing">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
@@ -22,7 +21,7 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="container">
-                    <div class="profile">
+                    <div class="profile center">
                         <!-- profile view .get start here  -->
                         <div class="profile-image">
                             <img class="rounded-circle" src="<%= designer.img %>" alt="">
@@ -35,10 +34,10 @@
                                     <%= designer.username %>
                                 </h1>
                                 <!-- Edit desiner profile -->
-                                <!-- ==========================importent Q -->
-                                <!-- href="editDesignerProfile"  -->
+                                <!-- ==========================-->
+                                <!-- href="editDesignerProfile"??  -->
                                 <!-- ================================ -->
-                                <button href="editDesignerProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
+                                <button href="editDesignerProfile" class="btn profile-edit-btn  d-md-flex justify-content-md-end" data-bs-toggle="modal"
                                     data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
                                     Profile</button>
 
