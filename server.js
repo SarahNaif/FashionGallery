@@ -5,9 +5,10 @@ const storage = multer.diskStorage({
     cb(null, './public/uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now()+'.png')
+  cb(null, file.fieldname + '-' + Date.now()+'.png')
   }
 })
+
 
 var upload = multer({ storage: storage })
 
@@ -95,7 +96,12 @@ app.post("/", (req, res) => {
 });
 
 
-
+app.get('/signup', (req, res) => {
+  res.render('SignUp.ejs');
+})
+app.get('/login', (req, res) => {
+  res.render('login.ejs');
+})
 
 // will be removed
 app.get('/uploadfile', (req, res) => {
