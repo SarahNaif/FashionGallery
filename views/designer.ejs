@@ -19,6 +19,9 @@
                 <div class="container">
                     <div class="profile">     <!-- profile view .get start here  -->
                         <div class="profile-image">
+                            <img class="rounded-circle"
+                                src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
+                                alt="">
                             <img class="rounded-circle" src="<%= designer.img %>" alt="">
                         </div>
                         <div class="profile-contant">
@@ -26,7 +29,7 @@
                                 <h1 class="profile-user-name"><%= designer.username %> </h1>
                                 <button href="editDesignerProfile" class="btn profile-edit-btn">Edit Profile</button>
                             </div>
-                
+
                             <div class="profile-stats">
                                 <ul>
                                     <li><span class="profile-stat-count"><%= designer.numpost %> </span> posts</li>
@@ -34,12 +37,12 @@
                                     <li><span class="profile-stat-count"><%= designer.numfollowing %></span> following</li>
                                 </ul>
                             </div>
-                
+
                             <div class="profile-bio">
                                 <p><span class="profile-real-name"><%= designer.namefull %></span></p>
                                 <p><%= designer.bio %> 📷✈️🏕️</p>
                             </div>
-                        </div>            
+                        </div>
                     </div>
 <!-- profile view .get start here  -->
                 </div>
@@ -100,59 +103,72 @@
                                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                             </div>
                             <button type="button" class="btn btn-dark add-review left">Add review</button>
-                           
+
                         </div>
                     </div>
-                        
+
                     <div class="card">
                         <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
+                            <form action="/designer" method="POST">
+                                <div class="rating">
+                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                    <h5 class="card-title">
+
+                                    </h5>
                                 </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+                                <textarea name="commend" placeholder="Write your commend..."></textarea>
+
+                                <button type="submit">commend</button>
+
+                            </form>
                         </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
+                    </div>
+
+                    <% comment.forEach(ele=> { %>
+
+                        <div class="card">
+                            <div class="card-body">
+
+                                <div class="rating">
+                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                    <h5 class="card-title">
+                                        <%= ele.fan %>
+                                    </h5>
                                 </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+
+                                <p class="card-text">
+                                    <%= ele.content %>
+                                </p>
+
+
+
+
+                            </div>
                         </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                            <div class="rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                <h5 class="card-title">Someone...</h5>
-                                </div>
-                          <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
-                        </div>
-                      </div>                      
+
+                        <% }); %>
+
                 </div>
             </div>
-    </div>
+        </div>
 
-    <!-- single post -->
-    <!-- add class collapse -->
-    <div class="container " id="singlePost">
-        <div class="post">
-            <div class="post-image">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                    alt="">
-            </div>
+        <!-- single post -->
+        <!-- add class collapse -->
+        <div class="container " id="singlePost">
+            <div class="post">
+                <div class="post-image">
+                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                        alt="">
+                </div>
 
-            <div class="post-description">
-                <h2>Designer</h2>
-                <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
+                <div class="post-description">
+                    <h2>Designer</h2>
+                    <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
+                </div>
             </div>
         </div>
-    </div>
 
 
 </main>
-
