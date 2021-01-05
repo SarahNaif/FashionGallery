@@ -54,6 +54,9 @@ designerSchema.methods.checkPassword = function (password)  {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
+//create index for search founction to work
+designerSchema.index({ name: 'text' })
+
 var Designer = mongoose.model("designer", designerSchema);
 
 // export designer model

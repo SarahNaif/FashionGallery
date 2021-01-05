@@ -23,23 +23,24 @@
     <div class="container marketing">
 
         <!--  -->
-        <div class="row">
-            <% designer.forEach(ele=> { %>
+        <div class="row">designers
+            <% designers.forEach(ele=> { %>
 
-                <div class="col-lg-4">
-                    <img class="rounded-circle" src=" <%= ele.img %> " alt="Generic placeholder image" width="140"
-                        height="140">
-                    <h2>
-                        <%= ele.name %>
-                    </h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
-                        ultricies
-                        vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
-                        commodo
-                        cursus
-                        magna.</p>
-                </div>
-
+                <a href="/designer/<%=ele._id%>">
+                    <div class="col-lg-4">
+                        <img class="rounded-circle" src=" <%= designers.img %> " alt="Generic placeholder image"
+                            width="140" height="140">
+                        <h2>
+                            <%= designers.name %>
+                        </h2>
+                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
+                            ultricies
+                            vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
+                            commodo
+                            cursus
+                            magna.</p>
+                    </div>
+                </a>
                 <% }); %>
 
 
