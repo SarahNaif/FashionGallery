@@ -22,7 +22,7 @@ router.get('/designer', (req, res) => {
         .then(designer => {
           Post.find()
             .then((post) => {
-              res.render('designer.ejs', { comment, designer, post })
+              res.render('designer/designer.ejs', { comment, designer, post })
             })
         })
     }).catch(err => console.log(err));
@@ -30,44 +30,45 @@ router.get('/designer', (req, res) => {
 
 
 router.get('/designer/signup', (req, res) => {
-  res.render('/designer/sign.ejs')
+  res.render('designer/sign.ejs')
 })
 
 router.get('/designer/login', (req, res) => {
-  res.render('/designer/sign.ejs')
+  res.render('designer/sign.ejs')
 })
 
 router.get('/designer/id/profile', (req, res) => {
-  res.render('/designer/profile.ejs')
+  res.render('designer/profile.ejs')
 })
 
 router.get('/designer/id/profile/edit', (req, res) => {
-  res.render('/designer/profile.ejs')
+  res.render('designer/profile.ejs')
 })
 
+//view all post
 router.get('/designer/id/post/id', (req, res) => {
-  res.render('/designer/post.ejs')
+  res.render('designer/post.ejs')
 })
 
 //to discuss
 router.get('/designer/id/post/new', (req, res) => {
-  res.render('/designer/post.ejs')
+  res.render('designer/post.ejs')
 })
 
 router.get('/designer/id/post/id/edit', (req, res) => {
-  res.render('/designer/post.ejs')
+  res.render('designer/post.ejs')
 })
 
 router.get('/designer/id/post/id/delete', (req, res) => {
-  res.render('/designer/post.ejs')
+  res.render('designer/post.ejs')
 })
 
 router.get('/designer/id/posts', (req, res) => {
-  res.render('/designer/post.ejs')
+  res.render('designer/post.ejs')
 })
 
 router.get('/designer/id/review', (req, res) => {
-  res.render('/designer/profile.ejs')
+  res.render('designer/profile.ejs')
 })
 
 
