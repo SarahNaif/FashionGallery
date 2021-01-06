@@ -8,12 +8,10 @@ const fanSchema = new Schema({
   name: String,
   image: String,
 //   gender: String,
-//   dateOfBirth: Date,
 //   phone: String,
 //   city: String,
 //   address: String,
 //   bio : String,
-  accounts: {},
 },{timestamps: true} );
 
 // methods for login go here

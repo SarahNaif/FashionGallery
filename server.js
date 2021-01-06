@@ -96,12 +96,12 @@ app.post("/", (req, res) => {
 });
 
 
-app.get('/signup', (req, res) => {
-  res.render('SignUp.ejs');
+app.get('/user', (req, res) => {
+  res.render('fan/designerProfile.ejs');
 })
-app.get('/login', (req, res) => {
-  res.render('login.ejs');
-})
+// app.get('/login', (req, res) => {
+//   res.render('login.ejs');
+// })
 
 // will be removed
 app.get('/uploadfile', (req, res) => {
