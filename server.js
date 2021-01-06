@@ -96,8 +96,8 @@ app.post("/", (req, res) => {
 });
 
 
-app.get('/user', (req, res) => {
-  res.render('fan/designerProfile.ejs');
+app.get('/sara', (req, res) => {
+  res.render('sara-index.ejs');
 })
 // app.get('/login', (req, res) => {
 //   res.render('login.ejs');
