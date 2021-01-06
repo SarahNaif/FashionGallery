@@ -48,7 +48,28 @@ router.get('/designer/id/review/new', (req, res) => {
     res.render('designer/profile.ejs')
 })
 
+//======================================
+// add commend form fan
+//======================================
 
+router.post('/designer', (req, res) => {
+    console.log("the commend: ", req.body.commend)
+  
+    let newCommend = {
+      content: req.body.commend
+      // ,
+      // fan: req.session.userId,
+      // designer: 
+    }
+  
+    Comment.create(newCommend)
+      .then(commend => {
+        console.log("creating commend: ", Comment)
+        res.redirect('/designer', { commend })
+      }).catch(err => console.log(err));
+  
+  });
+  
 //======================================
 // add commend form fan
 //======================================

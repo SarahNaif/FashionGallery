@@ -1,9 +1,7 @@
 const express = require('express')
-
 const mongoose = require("mongoose");
 const router = express.Router()
 const validator = require('express-validator')
-// const methodOverride = require("method-override");
 const Designer = require('../models/designer')
 const Comment = require('../models/comment')
 const Fan = require('../models/fan')
@@ -83,6 +81,8 @@ router.post('/designer/login', (req, res) => {
 //======================================
 // View Designer Profile by id
 //======================================
+
+// this route contains all designer info, posts, reviews 
 router.get("/designer/:id/profile", (req,res)=>{
   Designer.findById(req.params.id)
   .then((designer)=>{
@@ -92,15 +92,13 @@ router.get("/designer/:id/profile", (req,res)=>{
     Post.find({'designer': designer.id})
     .then((designerPosts)=>{
       console.log('designerPosts', designerPosts)
-
     })
-
     res.render("designer/designer.ejs",{designer})
   })
   .catch(err => console.log(err));
 })
 
-
+// add new post for the designer
 router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   // console.log(req.file)
   let newPost = {
@@ -119,6 +117,7 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   .catch(err => console.log(err))
 });
 
+// edit post 
 
 
 
@@ -128,90 +127,48 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
 
 
 
-router.get('/designer', (req, res) => {
+// router.get('/designer', (req, res) => {
 
-  Comment.find()
-    .populate('Designer')
-    .populate('Fan')
-    .then(comment => {
-      Designer.find()
-        .then(designer => {
-          Post.find()
-            .then((post) => {
-              res.render('designer/designer.ejs', { comment, designer, post })
-            })
-        })
-    }).catch(err => console.log(err));
-});
-
-
-router.get('/designer/signup', (req, res) => {
-  res.render('designer/sign.ejs')
-})
-
-router.get('/designer/login', (req, res) => {
-  res.render('designer/sign.ejs')
-})
-
-router.get('/designer/id/profile', (req, res) => {
-  res.render('designer/profile.ejs')
-})
-
-router.get('/designer/id/profile/edit', (req, res) => {
-  res.render('designer/profile.ejs')
-})
-
-//view all post
-router.get('/designer/id/post/id', (req, res) => {
-  res.render('designer/post.ejs')
-})
-
-//to discuss
-router.get('/designer/id/post/new', (req, res) => {
-  res.render('designer/post.ejs')
-})
-
-router.get('/designer/id/post/id/edit', (req, res) => {
-  res.render('designer/post.ejs')
-})
-
-router.get('/designer/id/post/id/delete', (req, res) => {
-  res.render('designer/post.ejs')
-})
-
-router.get('/designer/id/posts', (req, res) => {
-  res.render('designer/post.ejs')
-})
-
-router.get('/designer/id/review', (req, res) => {
-  res.render('designer/profile.ejs')
-})
-
-
-//======================================
-// add commend form fan
-//======================================
-
-router.post('/designer', (req, res) => {
-  console.log("the commend: ", req.body.commend)
-
-  let newCommend = {
-    content: req.body.commend
-    // ,
-    // fan: req.session.userId,
-    // designer: 
-  }
-
-  Comment.create(newCommend)
-    .then(commend => {
-      console.log("creating commend: ", Comment)
-      res.redirect('/designer', { commend })
-    }).catch(err => console.log(err));
-
-});
+//   Comment.find()
+//     .populate('Designer')
+//     .populate('Fan')
+//     .then(comment => {
+//       Designer.find()
+//         .then(designer => {
+//           Post.find()
+//             .then((post) => {
+//               res.render('designer/designer.ejs', { comment, designer, post })
+//             })
+//         })
+//     }).catch(err => console.log(err));
+// });
 
 
 
+// router.get('/designer/id/profile/edit', (req, res) => {
+//   res.render('designer/profile.ejs')
+// })
+
+// //to discuss
+// router.get('/designer/id/post/new', (req, res) => {
+//   res.render('designer/post.ejs')
+// })
+
+// router.get('/designer/id/post/id/edit', (req, res) => {
+//   res.render('designer/post.ejs')
+// })
+
+// router.get('/designer/id/post/id/delete', (req, res) => {
+//   res.render('designer/post.ejs')
+// })
+
+// router.get('/designer/id/posts', (req, res) => {
+//   res.render('designer/post.ejs')
+// })
+
+// router.get('/designer/id/review', (req, res) => {
+//   res.render('designer/profile.ejs')
+// })
 
 
 
