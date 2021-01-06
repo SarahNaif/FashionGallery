@@ -1,0 +1,112 @@
+<head>
+    <link rel="stylesheet" href="css/signup.css">
+  </head>
+
+<main style="margin-top: 4em;" role="main">
+    <div class="container marketing">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="container">
+                    <div class="profile center-element">
+                        <!-- profile view .get start here  -->
+                        <div class="profile-image">
+                            <img class="rounded-circle" src="<%= Fan.img %>" alt="">
+                        </div>
+
+                        <!-- Fan profile -->
+                        <div class="profile-contant">
+                            <div>
+                                <h1 class="profile-user-name">
+                                    <%= Fan.username %>
+                                </h1>
+                              
+                                <button href="editFanProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
+                                    data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
+                                    Profile</button>
+
+                                <div class="modal fade" id="EditProfileModal" tabindex="-1"
+                                    aria-labelledby="EditProfileModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="EditProfileModalLabel">Edit Profile</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/ ?_method=put" method="POST">
+                                                    <div class="form-group">
+                                                       
+                                                        <input type="text" placeholder="name" class="form-control">
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        
+                                                        <input type="text" placeholder="phone" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" placeholder="Email Address"
+                                                            class="form-control">
+                                                        <input type="password" placeholder="Password"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="city" class="form-control">
+                                                        <input type="text" placeholder="address" class="form-control">
+                                                    </div>
+                                                    <div class="form-wrapper row">
+                                                        <label for="example-date-input" class="col-2 col-form-label">Birth</label>
+                                                        <div class="col-10">
+                                                          <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                                                        </div>
+                                                      </div>
+                                                    <div class="form-wrapper">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="gender" value="male">
+                                                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                              </div>
+                                                              <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="gender" value="female">
+                                                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                         </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-wrapper">
+                                                        <input type="file" placeholder="image" class="form-control">
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="bio"
+                                                            id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">Bio</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <input type="submit" value="Edit" class="btn btn-dark btn-custom"
+                                                    style="float: right;">
+                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                    data-bs-dismiss="modal">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!--End of profile and edit profile Fan-->
+
+
+                            </div>
+
+                            <div class="profile-stats">
+                                <ul>
+                                    
+                                    <li><span class="profile-stat-count">
+                                            <%= Fan.followers %>
+                                        </span> followers</li>
+                                    <li><span class="profile-stat-count">
+                                            <%= Fan.numfollowing %>
+                                        </span> following</li>
+                                </ul>
+                            </div>
