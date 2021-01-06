@@ -11,6 +11,15 @@ const Post = require('../models/post')
 
 
 
+
+//======================================
+// show signup
+//======================================
+router.get('/fan/signup', (req, res) => {
+    res.render('fan/signup.ejs');
+  })
+
+
 router.get('/fan', (req, res) => {
     res.render('fan/fan.ejs')
 });

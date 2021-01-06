@@ -6,11 +6,10 @@ const postScema = new mongoose.Schema({
     content: String, 
     // details : String,
     // one to many 
-    user :{type : mongoose.Schema.Types.ObjectId , ref : 'user' }
+    designer :{type : mongoose.Schema.Types.ObjectId , ref : 'designer' }
     
 } , {timestamps :true})
 
 const Post = mongoose.model('post' , postScema)
 // to export fruit model
 module.exports = Post
-
