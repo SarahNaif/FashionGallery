@@ -98,6 +98,10 @@ router.get("/designer/:id/profile", (req,res)=>{
   .catch(err => console.log(err));
 })
 
+router.get("/designer-new", (req,res)=>{
+  res.render("designer/designer-new.ejs")
+
+})
 // add new post for the designer
 router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   // console.log(req.file)

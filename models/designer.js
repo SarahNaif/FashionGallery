@@ -7,13 +7,11 @@ const designerSchema = new Schema({
   passwordDigest: String,
   name: String,
   gender: String,
-  dateOfBirth: Date,
   image: String,
   phone: String,
   city: String,
   address: String,
   bio : String,
-  accounts: {},
 },{timestamps: true} );
 
 // methods for login go here

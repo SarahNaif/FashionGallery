@@ -7,11 +7,6 @@ const fanSchema = new Schema({
   passwordDigest: String,
   name: String,
   image: String,
-//   gender: String,
-//   phone: String,
-//   city: String,
-//   address: String,
-//   bio : String,
 },{timestamps: true} );
 
 // methods for login go here
