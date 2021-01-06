@@ -1,0 +1,209 @@
+<head>
+    <link rel="stylesheet" href="css/signup.css">
+  </head>
+
+<main style="margin-top: 4em;" role="main">
+    <div class="container marketing">
+        <ul class="nav nav-tabs nav-justified mb-3" style="color: black;" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="true">Profile</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="gallery-tab" data-bs-toggle="tab" href="#gallery" role="tab"
+                    aria-controls="gallery" aria-selected="false">Gallery</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab"
+                    aria-controls="reviews" aria-selected="false">Reviews</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="container">
+                    <div class="profile center-element">
+                        <!-- profile view .get start here  -->
+                        <div class="profile-image">
+                            <img class="rounded-circle" src="<%= designer.img %>" alt="">
+                        </div>
+
+                        <!-- desiner profile -->
+                        <div class="profile-contant">
+                            <div>
+                                <h1 class="profile-user-name">
+                                    <%= designer.username %>
+                                </h1>
+                            </div>
+
+                            <div class="profile-stats">
+                                <ul>
+                                    <li><span class="profile-stat-count">
+                                            <%= designer.numpost %>
+                                        </span> posts</li>
+                                    <li><span class="profile-stat-count">
+                                            <%= designer.followers %>
+                                        </span> followers</li>
+                                    <li><span class="profile-stat-count">
+                                            <%= designer.numfollowing %>
+                                        </span> following</li>
+                                </ul>
+                            </div>
+
+                            <div class="profile-bio">
+                                <p><span class="profile-real-name">
+                                        <%= designer.namefull %>
+                                    </span></p>
+                                <p>
+                                    <%= designer.bio %> 📷✈️🏕️
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile view .get start here  -->
+                </div>
+            </div>
+            <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+                <div class="container">
+                    
+
+                    <!-- Edit post -->
+                    <div class="col-lg-4">
+
+
+                        <div class="bg-white rounded shadow-sm">
+
+                            <!-- single post link -->
+                            <a data-toggle="collapse" href="#singlePost" role="button" aria-expanded="false"
+                                aria-controls="singlePost">link</a>
+
+                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                                alt="" class="img-fluid card-img-top">
+
+
+
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Designer</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit</p>
+                              
+                               </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Review -->
+        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            <div class="row review">
+
+                <div class="row">
+                    <div class="col-lg-9 review-header">
+
+
+                        <h2>Designer</h2>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="ratingBig">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                        <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#ReviewModal"
+                            data-bs-whatever="@new">Review</button>
+
+                        <div class="modal fade" id="ReviewModal" tabindex="-1" aria-labelledby="ReviewModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="ReviewModalLabel">Write a review</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/new" method="POST">
+
+                                            <div class="row review">
+                                                <div class="row">
+                                                    <div class="col-lg-9 review-header">
+                                                        <h6>How Did You Find Designer?</h6>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="ratingBig">
+                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <br>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3">
+
+                                                        <div class="form-floating mb-3">
+                                                            <textarea class="form-control" placeholder="content"
+                                                                id="floatingTextarea2" style="height: 100px"
+                                                                rows="3"></textarea>
+                                                            <label for="floatingTextarea2">Any Comment?</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <input type="submit" value="Post" class="btn btn-dark btn-custom"
+                                                    style="float: right;">
+                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
+                                                    data-bs-dismiss="modal">
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="rating">
+                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            <h5 class="card-title">Someone...</h5>
+                        </div>
+                        <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
+                            officiis, optio impedit modi ut at tempora inventore odio sequi, voluptatum magni! Ipsum
+                            obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- single post -->
+        <!-- add class collapse -->
+        <div class="container collapse" id="singlePost">
+            <div class="post">
+                <div class="post-image">
+                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                        alt="">
+                </div>
+
+                <div class="post-description">
+                    <h2>Designer</h2>
+                    <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
+                </div>
+            </div>
+        </div>
+
+
+</main>

@@ -1,27 +1,29 @@
 <head>
+
     <link rel="stylesheet" href="css/signup.css">
-  </head>
-  
+
+</head>
+
 <main style="margin-top: 4em;" role="main">
     <div class="container marketing">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs nav-justified mb-3 " id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
-                    aria-controls="profile" aria-selected="true">Profile</a>
+                <a class="nav-link active" style="color: black;" id="profile-tab" data-bs-toggle="tab" href="#profile"
+                    role="tab" aria-controls="profile" aria-selected="true">Profile</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="gallery-tab" data-bs-toggle="tab" href="#gallery" role="tab"
-                    aria-controls="gallery" aria-selected="false">Gallery</a>
+                <a class="nav-link" style="color: black;" id="gallery-tab" data-bs-toggle="tab" href="#gallery"
+                    role="tab" aria-controls="gallery" aria-selected="false">Gallery</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab"
-                    aria-controls="reviews" aria-selected="false">Reviews</a>
+                <a class="nav-link" style="color: black;" id="reviews-tab" data-bs-toggle="tab" href="#reviews"
+                    role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="container">
-                    <div class="profile center">
+                    <div class="profile center-element">
                         <!-- profile view .get start here  -->
                         <div class="profile-image">
                             <img class="rounded-circle" src="<%= designer.img %>" alt="">
@@ -34,10 +36,10 @@
                                     <%= designer.username %>
                                 </h1>
                                 <!-- Edit desiner profile -->
-                                <!-- ==========================-->
-                                <!-- href="editDesignerProfile"??  -->
+                                <!-- ==========================importent Q -->
+                                <!-- href="editDesignerProfile"  -->
                                 <!-- ================================ -->
-                                <button href="editDesignerProfile" class="btn profile-edit-btn  d-md-flex justify-content-md-end" data-bs-toggle="modal"
+                                <button href="editDesignerProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
                                     data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
                                     Profile</button>
 
@@ -52,10 +54,9 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form action="/ ?_method=put" method="POST">
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="First Name"
-                                                            class="form-control">
-                                                        <input type="text" placeholder="Last Name" class="form-control">
+                                                    <div class="form-wrapper">
+
+                                                        <input type="text" placeholder="Name" class="form-control">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" placeholder="Username" class="form-control">
@@ -76,12 +77,16 @@
                                                             class="form-control">
                                                     </div>
                                                     <div class="form-wrapper">
-                                                        <select name="" id="" class="form-control ">
-                                                            <option value="Gender" disabled selected>gander</option>
-                                                            <option value="designer">Female</option>
-                                                            <option value="fan">male</option>
-                                                        </select>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="gender" value="male">
+                                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                          </div>
+                                                          <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="gender" value="female">
+                                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                        </div>
                                                     </div>
+                                                      
                                                     <div class="form-wrapper">
                                                         <input type="file" placeholder="image" class="form-control">
                                                     </div>
@@ -135,6 +140,7 @@
                     <!-- profile view .get start here  -->
                 </div>
             </div>
+
             <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
                 <div class="container">
 
@@ -143,10 +149,28 @@
 
                     <!--Gallery with popup Edit and Delete button    -->
                     <div class="row">
+
                         <div class="container marketing">
+
+                            <div class="row">
+                                
+                             <div class="col-4"></div>
+
+                             <div class="col-4">
+                                <form class="form-inline mx-sm-3 mb-2" action="/" method="POST">
+                                    <input class="form-control mr-sm-2 " type="text" placeholder="Search" aria-label="Search"
+                                        name="Search">
+                                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </div>
+                                <div class="col-4">
                             <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#NewModal"
                                 data-bs-whatever="@new">New
                                 Post</button>
+                            </div>
+                           
+                            
+                            </div>
                             <div class="modal fade" id="NewModal" tabindex="-1" aria-labelledby="NewModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
@@ -189,6 +213,7 @@
                                                 </div>
                                             </form>
                                         </div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -202,8 +227,8 @@
                         <div class="bg-white rounded shadow-sm">
 
                             <!-- single post link -->
-                            <a data-toggle="collapse" href="#singlePost" role="button" aria-expanded="false"
-                                aria-controls="singlePost">link</a>
+                            <!-- <a data-toggle="collapse" href="#singlePost" role="button" aria-expanded="false"
+                                aria-controls="singlePost">link</a> -->
 
                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
                                 alt="" class="img-fluid card-img-top">
@@ -272,83 +297,13 @@
                 </div>
 
             </div>
-        </div>
-
-        <!-- Review -->
-        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-            <div class="row review">
-
-                <div class="row">
-                    <div class="col-lg-9 review-header">
 
 
-                        <h2>Designer</h2>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="ratingBig">
-                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
-                        <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#ReviewModal"
-                            data-bs-whatever="@new">Review</button>
+            <!-- Review -->
+            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
 
-                        <div class="modal fade" id="ReviewModal" tabindex="-1" aria-labelledby="ReviewModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title" id="ReviewModalLabel">Write a review</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="/new" method="POST">
+                <h2>Designer</h2>
 
-                                            <div class="row review">
-                                                <div class="row">
-                                                    <div class="col-lg-9 review-header">
-                                                        <h6>How Did You Find Designer?</h6>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="ratingBig">
-                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row">
-                                                    <br>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="mb-3">
-
-                                                        <div class="form-floating mb-3">
-                                                            <textarea class="form-control" placeholder="content"
-                                                                id="floatingTextarea2" style="height: 100px"
-                                                                rows="3"></textarea>
-                                                            <label for="floatingTextarea2">Any Comment?</label>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-
-                                                <input type="submit" value="Post" class="btn btn-dark btn-custom"
-                                                    style="float: right;">
-                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
-                                                    data-bs-dismiss="modal">
-
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="rating">
@@ -360,29 +315,34 @@
                             obcaecati mollitia cum corrupti officiis voluptate deserunt nisi.</p>
                     </div>
                 </div>
+
+
+
+
+
+
+
             </div>
         </div>
+    </div>
+    </div>
+    <!-- single post add class collapse -->
 
 
-
-
-        <!-- single post -->
-        <!-- add class collapse -->
-        <div class="container collapse" id="singlePost">
-            <div class="post">
-                <div class="post-image">
-                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
-                        alt="">
-                </div>
-
-                <div class="post-description">
-                    <h2>Designer</h2>
-                    <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
-                </div>
+    <!-- <div class="container collapse" id="singlePost">
+        <div class="post">
+            <div class="post-image">
+                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg"
+                    alt="">
+            </div>
+            <div class="post-description">
+                <h2>Designer</h2>
+                <p class="p-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️<br>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ <br></p>
             </div>
         </div>
+    </div>  -->
 
 
 </main>
