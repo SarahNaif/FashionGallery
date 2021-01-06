@@ -11,7 +11,6 @@ const Post = require('../models/post')
 
 
 
-
 router.get('/fan', (req, res) => {
     res.render('fan/fan.ejs')
 });
