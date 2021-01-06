@@ -44,7 +44,7 @@ body {
 }
 
 .bg-c-lite-green {
-    background-color: #333333;
+    background-color: #E1DBD4;
     /* background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f)); */
     /* background: linear-gradient(to right, #5a95ee, #f29263) */
 }
@@ -145,3 +145,9 @@ h6 {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out
 }
+
+
+.review{
+    margin: 3rem 2rem;
+    padding: 1rem;
+  }
