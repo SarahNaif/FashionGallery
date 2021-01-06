@@ -164,3 +164,21 @@ hr.solid {
 .divider{
   margin-bottom: 70px;
 }
+
+.register a, .register button {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    
+    border-radius: 2px;
+    margin: 10px;
+    border: none;
+    color: #fff;
+    background: #2c2c2c;
+    text-decoration: none;
+}
+
+/* .register a:hover , .register:focus{
+    cursor: pointer;
+} */

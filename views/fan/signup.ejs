@@ -1,0 +1,52 @@
+<head>
+    <link rel="stylesheet" href="../../css/signup.css" />
+  </head>
+  <div class="wrapper center-element" >
+    <div class="cont" >
+      <div class="d-inline-flex  flex-wrap flex-row container-md-auto">
+        <div class="col-4-md-auto p-3">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/dvukj9sqf/image/upload/v1609711810/registration-form-1_xkabsq.jpg"
+            alt="model"
+          />
+        </div>
+        <div class="col-md-auto p-3">
+          <form action="/Fan/new" method="POST">
+            <h3>Fan Registration</h3>
+            <div class="form-wrapper">
+              <input type="text" placeholder="name" class="form-control" name="name" />
+              <i></i>
+            </div>
+            <div class="form-wrapper">
+              <input type="email" placeholder="Email Address" class="form-control" name="email"/>
+              <i></i>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="male">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="female">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+              <br>
+            <br> 
+            <div class="form-wrapper">
+              <input type="password" placeholder="Password" class="form-control" name="password"/>
+              <i></i>
+            </div>
+            <div class="form-wrapper">
+              <input type="password" placeholder="Confirm Password" class="form-control"/>
+              <i></i>
+            </div>
+            <button>
+              Register
+              <i></i>
+            </button>
+            <a class="linklog" href="fan/login">Already have an account ?</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
