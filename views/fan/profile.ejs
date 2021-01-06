@@ -10,14 +10,14 @@
                     <div class="profile center-element">
                         <!-- profile view .get start here  -->
                         <div class="profile-image">
-                            <img class="rounded-circle" src="<%= Fan.img %>" alt="">
+                            <img class="rounded-circle" src="<%= fan.img %>" alt="">
                         </div>
 
                         <!-- Fan profile -->
                         <div class="profile-contant">
                             <div>
                                 <h1 class="profile-user-name">
-                                    <%= Fan.username %>
+                                    <%= fan.username %>
                                 </h1>
                               
                                 <button href="editFanProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
@@ -103,10 +103,8 @@
                                 <ul>
                                     
                                     <li><span class="profile-stat-count">
-                                            <%= Fan.followers %>
                                         </span> followers</li>
                                     <li><span class="profile-stat-count">
-                                            <%= Fan.numfollowing %>
                                         </span> following</li>
                                 </ul>
                             </div>

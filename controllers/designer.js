@@ -126,7 +126,6 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
 
 
 
-
 // router.get('/designer', (req, res) => {
 
 //   Comment.find()

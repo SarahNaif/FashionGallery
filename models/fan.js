@@ -16,7 +16,7 @@ const fanSchema = new Schema({
 
 // methods for login go here
 
-fanSchema.statics.createSecure = (email, password,callback) => {
+fanSchema.statics.createSecure = (email, password, name,gender,callback) => {
   // console.log("I received this email, password :", email, password);
   bcrypt.genSalt((err, salt) => {
     // console.log('brypt salt:', salt)

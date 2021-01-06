@@ -61,66 +61,52 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, { useNewUrlParser: true, useU
 // related to search
 app.use(require('./controllers/designer'))
 
-app.get('/', (req, res) => {
-
-  Designer.find()
-    .then(designer => {
-      res.render('index.ejs', { designer });
-
-    }).catch(err => console.log(err));
-
-});
 
 // move to designer 
 //======================================
 // search for designer
 //======================================
 
-app.post("/", (req, res) => {
-  console.log("search value: ", req.body.Search);
+// app.post("/", (req, res) => {
+//   console.log("search value: ", req.body.Search);
 
-  let searchValue = req.body.Search
-  Designer.find({ $text: { $search: searchValue } })
-  .then(designer => {
-    console.log('searched designer: ', designer)
-    res.redirect('/');
+//   let searchValue = req.body.Search
+//   Designer.find({ $text: { $search: searchValue } })
+//   .then(designer => {
+//     console.log('searched designer: ', designer)
+//     res.redirect('/');
 
-  }).catch(err => console.log(err));
-    // .then(designers => {
-    //   // designers = req.session.Search
-    //   console.log('searched designer: ', designers)
+//   }).catch(err => console.log(err));
+//     // .then(designers => {
+//     //   // designers = req.session.Search
+//     //   console.log('searched designer: ', designers)
 
-    //   res.redirect('index.ejs', { designers })
-    // }).catch(err => console.log(err));
+//     //   res.redirect('index.ejs', { designers })
+//     // }).catch(err => console.log(err));
 
-});
+// });
 
 
-app.get('/user', (req, res) => {
-  res.render('fan/designerProfile.ejs');
+app.get('/', (req, res) => {
+  res.render('index-page.ejs');
 })
-// app.get('/login', (req, res) => {
-//   res.render('login.ejs');
-// })
 
-// will be removed
-app.get('/uploadfile', (req, res) => {
-  res.render('file.ejs');
-})// add }) to fix SyntaxError: Unexpected end of input
 
-// It's very crucial that the file name matches the name attribute in your html
-app.post('/uploadfile', upload.single('file-to-upload'), (req, res) => {
-  console.log(req.file)
-  res.redirect('/');
-});
+// // will be removed
+// app.get('/uploadfile', (req, res) => {
+//   res.render('file.ejs');
+// })// add }) to fix SyntaxError: Unexpected end of input
 
-// app.get('/designer', (req, res) => {
-//   res.render('designer.ejs');
+// // It's very crucial that the file name matches the name attribute in your html
+// app.post('/uploadfile', upload.single('file-to-upload'), (req, res) => {
+//   console.log(req.file)
+//   res.redirect('/');
 // });
 
   
 app.use(require('./controllers/designer'))
 app.use(require('./controllers/post'))
+app.use(require('./controllers/fan'))
   
 // CONNECTIONS
 app.listen(PORT, () => console.log(`server is running ${PORT}`));
