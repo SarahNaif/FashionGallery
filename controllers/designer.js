@@ -123,7 +123,22 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
 });
 
 // edit post 
-
+// /designer/id/post/id/edit
+router.put('/designer/:id/post/:pid/edit', upload.single('image'), (req, res) =>{
+  console.log('you are ////////////////////////////////////////////////////')
+  console.log('req.body.title', req.body.title)
+  let updatedPost = {
+      title: req.body.title,
+      content: req.body.content,
+      image: '/uploads/' + req.file.filename
+  };
+  console.log('updatedPost', updatedPost)
+  Post.findByIdAndUpdate(req.params.pid, updatedPost)
+  .then( (post) =>{
+    res.redirect('back');
+  })
+  .catch(err => console.log(err));
+})
 
 //======================================
 // Edit Designer Profile

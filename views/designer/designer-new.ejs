@@ -28,7 +28,7 @@
                     <div class="row m-l-0 m-r-0">
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
-                                <div class="m-b-25"> <img src="<%=designer.image%> " class="img-radius"
+                                <div class="m-b-25"> <img src="<%=designer.image%>" class="img-radius"
                                         alt="User-Profile-Image" width="65%"> </div>
                                 <h5 class="f-w-600 text-dark">
                                     <%=designer.name%>
@@ -145,8 +145,7 @@
                 <% designerPosts.forEach(ele=> { %>
                     <div class="col h-100 cols-md-3">
                         <div class="card h-80 shadow p-3 mb-5 bg-white rounded">
-                            <img src="https://res.cloudinary.com/dvukj9sqf/image/upload/v1609884440/Screenshot_2021-01-05_20-18-25-461_d2j1g8.png"
-                                class="card-img-top " alt="...">
+                            <img src="<%=ele.image%> " alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%=ele.title%>
@@ -357,10 +356,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/newpost" method="POST">
+                <form action="/designer/<%=designer._id%>/post/new" enctype="multipart/form-data" method="POST">
 
                     <div class="form-floating mb-3">
-                        <input type="Design" class="form-control" id="floatingInput" placeholder="Design">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Title" name="title">
                         <label for="floatingInput">Design</label>
                     </div>
 
@@ -371,7 +370,7 @@
 
                     <div class="form-floating mb-3">
                         <textarea class="form-control" placeholder="content" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
+                            style="height: 100px" name="content"></textarea>
                         <label for="floatingTextarea2">content</label>
                     </div>
                     <div class="modal-footer">
@@ -398,23 +397,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/edit ?_method=put" method="POST" class="row g-3">
+                    <form action="/designer/<%=designer._id%>/post/<%=ele._id%>/edit?_method=put" enctype="multipart/form-data" method="POST" class="row g-3">
                         <div class="form-floating mb-3">
-                            <input type="Design" class="form-control" id="floatingInput" placeholder="Design"
-                                value="<%=ele.title%>">
+                            <input type="Design" class="form-control" id="floatingInput" placeholder="Design" name="title"  value="<%=ele.title%> ">
                             <label for="floatingInput">
                                 <title></title>
                             </label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="file" class="form-control" placeholder="Image" name="image">
+                            <input type="file" class="form-control" placeholder="Image" name="image" value="<%=ele.image%>">
 
                         </div>
 
                         <div class="form-floating mb-3">
                             <textarea class="form-control" placeholder="content" id="floatingTextarea2"
-                                style="height: 100px"><%=ele.content%></textarea>
+                                style="height: 100px" name="content"><%=ele.content%></textarea>
                             <label for="floatingTextarea2">content</label>
                         </div>
                         <div class="modal-footer">
@@ -428,4 +426,4 @@
             </div>
         </div>
     </div>
-    <% }); %>
+<% }); %>
