@@ -157,7 +157,10 @@
                                     <button class="btn btn-outline-dark " data-bs-toggle="modal"
                                         data-bs-target="#EditPostModal<%=ele._id%>"
                                         data-bs-whatever="@getbootstrap">Edit</button>
+                                        <form action="/designer/<%=designer._id%>/post/<%=ele._id%>?_method=DELETE
+                                            " method="POST">
                                     <button class="btn btn-outline-dark">Delete</button>
+                                        </form>
                                 </div>
                             </div>
                         </div>

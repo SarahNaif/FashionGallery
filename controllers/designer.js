@@ -140,6 +140,16 @@ router.put('/designer/:id/post/:pid/edit', upload.single('image'), (req, res) =>
   .catch(err => console.log(err));
 })
 
+//=========================================
+// Delete post 
+//======================================
+router.delete("/designer/:id/post/:pid", (req, res) => {
+  Post.findByIdAndDelete(req.params.pid)
+      .then((post) => {
+      res.redirect('back');
+      })
+      .catch(err => console.log(err))
+});
 //======================================
 // Edit Designer Profile
 //======================================
