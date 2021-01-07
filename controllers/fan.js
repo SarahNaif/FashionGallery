@@ -50,7 +50,7 @@ router.post(
     console.log('info',req.body.name,req.body.password, req.body.email, req.body.gender)
     Fan.createSecure(req.body.email, req.body.password, req.body.name, req.body.gender, (err, newUser)=> {
       // adding the session of user
-      req.session.userId = newUser.id;
+      // req.session.userId = newUser.id;
       console.log(req.session.userId)
       res.redirect('/fan/login')
     })
