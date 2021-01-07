@@ -91,9 +91,10 @@ router.get("/designer/:id/profile", (req,res)=>{
     // designer post = designer 
     Post.find({'designer': designer.id})
     .then((designerPosts)=>{
-      console.log('designerPosts', designerPosts)
+      console.log('designerPosts', designerPosts);
+      res.render("designer/designer-new.ejs",{designer :designer, designerPosts: designerPosts})
     })
-    res.render("designer/designer.ejs",{designer})
+  .catch(err => console.log(err));
   })
   .catch(err => console.log(err));
 })
@@ -124,10 +125,29 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
 // edit post 
 
 
-
-
-
-
+//======================================
+// Edit Designer Profile
+//======================================
+router.put("/designer/:id/profile/edit",upload.single('image'), (req,res)=>{
+  let updatedProfile = {
+    email: req.body.email,
+    passwordDigest: '123456',
+    name: req.body.name,
+    gender: req.body.gender,
+    image: '/uploads/' + req.file.filename,
+    phone: req.body.phone,
+    city: req.body.city,
+    address: req.body.address,
+    bio : req.body.bio,
+  };
+  console.log('updatedProfile',updatedProfile)
+  Designer.findByIdAndUpdate((req.params.id, updatedProfile))
+  .then( (designer) =>{
+    // refresh the page
+        // res.redirect("/post/:" + designer.id)
+    })
+    .catch(err => console.log(err));
+});
 
 
 // router.get('/designer', (req, res) => {
