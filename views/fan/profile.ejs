@@ -1,110 +1,141 @@
 <head>
-    <link rel="stylesheet" href="css/signup.css">
-  </head>
+    <link rel="stylesheet" href="../../css/designer.css">
+    <link rel="stylesheet" href="../../css/test.css">
 
-<main style="margin-top: 4em;" role="main">
-    <div class="container marketing">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div class="container">
-                    <div class="profile center-element">
-                        <!-- profile view .get start here  -->
-                        <div class="profile-image">
-                            <img class="rounded-circle" src="<%= fan.img %>" alt="">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
+</head>
+<main role="main" class="designer-wrapper">
+
+    <!-- fan profile -->
+    <div class="container">
+        <div class="profile center-element mb-5">
+            <!-- profile view .get start here  -->
+            <div class="profile-image">
+                <% if (fan.image=="" ){ %>
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                        alt="">
+                    <% } else { %>
+                        <img src="<%= fan.image %>" alt="">
+                        <% } %>
+            </div>
+
+            <!-- desiner profile -->
+            <div class="row profile-contant align-self-center">
+                <h1 class="profile-user-name">
+                    <%= fan.name %>
+                </h1>
+
+                <button href="editDesignerProfile" class="btn btn-dark btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
+                    Profile</button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- end -->
+
+    <div class="container">
+        <div class="row">
+            <div class="row mt-3 mb-3">
+
+                <form class="form-inline mx-sm-3 mb-2 flex-row" action="/search" method="POST">
+                    <div class="col-lg-6">
+                        <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="Search">
+                    </div>
+
+                    <div class="col">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+
+                </form>
+                <% if( designer !==undefined){%>
+                    <div>
+                        <% designer.forEach(ele=> { %>
+                            <h5><a href="/designer/:<%= ele._id %>/profile/">
+                                    <%= ele.name %>
+                                </a></h5>
+                            <% }); %>
+                    </div>
+                    <% } %>
+
+
+
+            </div>
+        </div>
+
+        <div class="row d-inline-flex">
+            <% posts.forEach(ele=> { %>
+                <div class="col h-100 cols-md-3">
+                    <div class="card h-80 shadow p-3 mb-5 bg-white rounded">
+                        <img src="<%= ele.image %> " class="card-img-top " alt="...">
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <%= ele.designer %>
+                            </h5>
+
+                            <p class="card-text">
+                                <%= ele.content %>
+                            </p>
                         </div>
-
-                        <!-- Fan profile -->
-                        <div class="profile-contant">
-                            <div>
-                                <h1 class="profile-user-name">
-                                    <%= fan.username %>
-                                </h1>
-                              
-                                <button href="editFanProfile" class="btn profile-edit-btn" data-bs-toggle="modal"
-                                    data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
-                                    Profile</button>
-
-                                <div class="modal fade" id="EditProfileModal" tabindex="-1"
-                                    aria-labelledby="EditProfileModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h3 class="modal-title" id="EditProfileModalLabel">Edit Profile</h3>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="/ ?_method=put" method="POST">
-                                                    <div class="form-group">
-                                                       
-                                                        <input type="text" placeholder="name" class="form-control">
-                                                    </div>
-                                                    <div class="form-wrapper">
-                                                        
-                                                        <input type="text" placeholder="phone" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="email" placeholder="Email Address"
-                                                            class="form-control">
-                                                        <input type="password" placeholder="Password"
-                                                            class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="city" class="form-control">
-                                                        <input type="text" placeholder="address" class="form-control">
-                                                    </div>
-                                                    <div class="form-wrapper row">
-                                                        <label for="example-date-input" class="col-2 col-form-label">Birth</label>
-                                                        <div class="col-10">
-                                                          <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                                                        </div>
-                                                      </div>
-                                                    <div class="form-wrapper">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="gender" value="male">
-                                                                <label class="form-check-label" for="inlineRadio1">Male</label>
-                                                              </div>
-                                                              <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="gender" value="female">
-                                                                <label class="form-check-label" for="inlineRadio2">Female</label>
-                                                         </div>
-                                                        
-                                                    </div>
-                                                    <div class="form-wrapper">
-                                                        <input type="file" placeholder="image" class="form-control">
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="bio"
-                                                            id="floatingTextarea2" style="height: 100px"></textarea>
-                                                        <label for="floatingTextarea2">Bio</label>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-
-                                                <input type="submit" value="Edit" class="btn btn-dark btn-custom"
-                                                    style="float: right;">
-                                                <input type="submit" value="close" class="btn btn-dark btn-custom"
-                                                    data-bs-dismiss="modal">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <% }); %>
 
 
 
-                                <!--End of profile and edit profile Fan-->
+        </div>
+
+    </div>
+
+</main>
 
 
-                            </div>
+<!-- models -->
+<!-- edit profile -->
+<div class="modal fade" id="EditProfileModal" tabindex="-1" aria-labelledby="EditProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="EditProfileModalLabel">Edit Profile</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/fan/<%=fan._id%>/profile/edit?_method=put" enctype="multipart/form-data"
+                    method="POST">
+                    <div class="form-wrapper">
+                        <input type="text" placeholder="Name" class="form-control" name="name"
+                            value="<%=fan.name%> ">
+                        <br>
+                    </div>
 
-                            <div class="profile-stats">
-                                <ul>
-                                    
-                                    <li><span class="profile-stat-count">
-                                        </span> followers</li>
-                                    <li><span class="profile-stat-count">
-                                        </span> following</li>
-                                </ul>
-                            </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" class="form-control" name="email"
+                            value="<%=fan.email%> ">
+                        <br>
+                        <input type="password" placeholder="Type your new password" class="form-control" name="password">
+                        <br>
+                    </div>
+
+
+                    <br>
+                    <div class="form-wrapper">
+                        <input type="file" placeholder="image" class="form-control" name="image">
+                    </div>
+                    <br>
+
+                    <div class="modal-footer">
+
+                        <input type="submit" value="Edit" class="btn btn-dark btn-custom" style="float: right;">
+                        <input type="submit" value="close" class="btn btn-dark btn-custom" data-bs-dismiss="modal">
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="../../js/main.js"></script>

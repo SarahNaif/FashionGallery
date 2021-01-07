@@ -1,13 +1,25 @@
 const express = require('express')
-
 const mongoose = require("mongoose");
 const router = express.Router()
 const validator = require('express-validator')
-
 const Designer = require('../models/designer')
 const Comment = require('../models/comment')
 const Fan = require('../models/fan')
 const Post = require('../models/post')
+const methodOverride = require("method-override");
+router.use(methodOverride("_method"));
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now()+'.png')
+  }
+})
+
+var upload = multer({ storage: storage })
 
 
 
@@ -64,7 +76,7 @@ router.get('/fan/login', (req, res) => {
         res.status(500).send(err)
       }else{
         req.session.userId = foundFan.id;
-        res.redirect('/fan/'+foundFan.id+'/designers', )
+        res.redirect('/fan/'+foundFan.id+'/profile')
       }
     })
   })
@@ -73,72 +85,18 @@ router.get('/fan/login', (req, res) => {
 // View Fan Profile by id
 //======================================
 // this route contains all designer info, posts, reviews 
-router.get("/fan/:id/designers", (req,res)=>{
+router.get("/fan/:id/profile", (req,res)=>{
+  designer = undefined
     Fan.findById(req.params.id)
     .then((fan)=>{
-      console.log('fan:',fan)
-      // designer info = designer 
-      // designer post = designer 
-    //   all posts
-      Post.find()
-      .then((posts)=>{
-        console.log('designerPosts', posts)
-      })
-      res.render("fan/designerProfile.ejs",{fan})
-    })
-    .catch(err => console.log(err));
+        Post.find()
+        .then((posts)=>{
+          // console.log('designerPosts', posts)
+          res.render("fan/profile.ejs",{fan, posts, designer})
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
   })
   
-
-// router.get('/fan', (req, res) => {
-//     res.render('fan/fan.ejs')
-// });
-
-// router.get('/fan/signup', (req, res) => {
-//     res.render('fan/sign.ejs')
-// })
-
-// router.get('/fan/login', (req, res) => {
-//     res.render('fan/sign.ejs')
-// })
-
-// router.get('/fan/designers', (req, res) => {
-//     res.render('fan/designers.ejs')
-// })
-
-// router.get('/fan/designer/id', (req, res) => {
-//     res.render('fan/profile.ejs')
-// })
-
-// router.get('/fan/designer/id', (req, res) => {
-//     res.render('fan/profile.ejs')
-// })
-
-// router.get('/designer/id/review/new', (req, res) => {
-//     res.render('designer/profile.ejs')
-// })
-
-//======================================
-// add commend form fan
-//======================================
-
-// router.post('/designer', (req, res) => {
-//     console.log("the commend: ", req.body.commend)
-  
-//     let newCommend = {
-//       content: req.body.commend
-//       // ,
-//       // fan: req.session.userId,
-//       // designer: 
-//     }
-  
-//     Comment.create(newCommend)
-//       .then(commend => {
-//         console.log("creating commend: ", Comment)
-//         res.redirect('/designer', { commend })
-//       }).catch(err => console.log(err));
-  
-//   });
   
 //======================================
 // add commend form fan
@@ -160,6 +118,61 @@ router.post('/designer', (req, res) => {
     }).catch(err => console.log(err));
   })
       
+  //======================================
+// search for designer
+//======================================
+
+router.post("/search", (req, res) => {
+  console.log("search value: ", req.body.Search);
+
+  let searchValue = req.body.Search
+  Designer.find({ $text: { $search: searchValue } })
+  .then(designer => {
+
+    console.log('searched designer: ', designer)
+    
+    // res.redirect('/fan/'+req.session.userId+'/profile', { designer })
+    res.render('fan/profile.ejs', { designer })
+
+  }).catch(err => console.log(err));
+});
+
+// edit post 
+// /designer/id/post/id/edit
+router.put("/fan/:id/profile/edit",upload.single('image'), (req,res)=>{
+  let updatedProfile = {
+    email: req.body.email,
+    passwordDigest: '123456',
+    name: req.body.name,
+    image: '/uploads/' + req.file.filename
+  };
+  console.log('updatedProfile',updatedProfile)
+  Designer.findByIdAndUpdate((req.params.id, updatedProfile))
+  .then( (designer) =>{
+    req.session.userId = foundFan.id;
+    res.redirect('/fan/'+foundFan.id+'/profile')
+    })
+    .catch(err => console.log(err));
+});
+
+
+// router.put('/fan/:id/profile/edit', upload.single('image'), (req, res) =>{
+//   console.log('you are ////////////////////////////////////////////////////')
+
+//   let updatedfan = {
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: req.body.password,
+//       image: '/uploads/' + req.file.filename
+//   };
+//   console.log('updatedPost', updatedfan)
+//   Fan.findByIdAndUpdate(req.params._id, updatedPost)
+//   .then( (fan) =>{
+//     req.session.userId = foundFan.id;
+//     res.redirect('/fan/'+foundFan.id+'/profile')
+//   })
+//   .catch(err => console.log(err));
+// })
 
 // export routes
 module.exports = router

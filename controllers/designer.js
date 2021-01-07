@@ -86,21 +86,18 @@ router.post('/designer/login', (req, res) => {
 router.get("/designer/:id/profile", (req,res)=>{
   Designer.findById(req.params.id)
   .then((designer)=>{
-    console.log('designer:',designer)
-    // designer info = designer 
-    // designer post = designer 
-    Post.find({'designer': designer.id})
-    .then((designerPosts)=>{
-      console.log('designerPosts', designerPosts);
-      res.render("designer/designer-new.ejs",{designer :designer, designerPosts: designerPosts})
-    })
-  .catch(err => console.log(err));
-  })
-  .catch(err => console.log(err));
+    Comment.find({'designer': designer.id})
+    .then((comment)=>{
+      Post.find({'designer': designer.id})
+      .then((designerPosts)=>{
+        res.render("designer/profile.ejs",{designer, designerPosts, comment})
+      }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+  }).catch(err => console.log(err));
 })
 
 router.get("/designer-new", (req,res)=>{
-  res.render("designer/designer-new.ejs")
+  res.render("designer/profile.ejs")
 
 })
 // add new post for the designer
@@ -173,70 +170,6 @@ router.put("/designer/:id/profile/edit",upload.single('image'), (req,res)=>{
     })
     .catch(err => console.log(err));
 });
-
-
-// router.get('/designer', (req, res) => {
-
-//   Comment.find()
-//     .populate('Designer')
-//     .populate('Fan')
-//     .then(comment => {
-//       Designer.find()
-//         .then(designer => {
-//           Post.find()
-//             .then((post) => {
-//               res.render('designer/designer.ejs', { comment, designer, post })
-//             })
-//         })
-//     }).catch(err => console.log(err));
-// });
-
-
-
-// router.get('/designer/id/profile/edit', (req, res) => {
-//   res.render('designer/profile.ejs')
-// })
-
-// //to discuss
-// router.get('/designer/id/post/new', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/post/id/edit', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/post/id/delete', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/posts', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/review', (req, res) => {
-//   res.render('designer/profile.ejs')
-// })
-
-
-
-
-
-//======================================
-// show single designer
-//======================================
-// router.get('/designer/:id', (req, res) => {
-//   var id = req.params.id;
-
-//   Comment.findById(id)
-//     .populate('Designer')
-//     .populate('Fan')
-//     .then(comment => {
-//       console.log("the data", comment)
-//       res.render('designer.ejs', { comment });
-//     }).catch(err => console.log(err));
-
-// });
 
 
 // export routes
