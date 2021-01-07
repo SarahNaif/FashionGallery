@@ -50,3 +50,11 @@ On the other hand, the fan will be able to:
   <img src="./wireframe/AddReview.png">
   <i>Fig. 8: The Add Review Page</i>
 </p>
+
+## Technologies Used
+- [Wireframe tool](https://mockflow.com/app/#Wireframe)
+- PL: HTML, CSS, JS, Express Js, 
+- DB: Mongoo
+- Deployment: Heroku
+- VS Code editor.
+- Chrome Developer tool.
