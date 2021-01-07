@@ -26,12 +26,9 @@
                     <%= fan.name %>
                 </h1>
 
-
                 <button href="editDesignerProfile" class="btn btn-dark btn-sm" data-bs-toggle="modal"
                     data-bs-target="#EditProfileModal" data-bs-whatever="@getbootstrap">Edit
                     Profile</button>
-
-
 
             </div>
         </div>
@@ -51,27 +48,21 @@
                     <div class="col">
                         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                     </div>
+
                 </form>
+                <% if( designer !==undefined){%>
+                    <div>
+                        <% designer.forEach(ele=> { %>
+                            <h5><a href="/designer/:<%= ele._id %>/profile/">
+                                    <%= ele.name %>
+                                </a></h5>
+                            <% }); %>
+                    </div>
+                    <% } %>
 
-                <select class="mdb-select md-form" searchable="Search here..">
-                    <option value="" disabled selected>Choose your country</option>
 
-                    <option value="1">USA</option>
-                  </select>
 
             </div>
-            <!-- <div class="col cols-md-3">
-                    <form class="form-inline mx-sm-3 mb-2 flex-row" action="/" method="POST">
-                        <input class="form-control " type="text" placeholder="Search" aria-label="Search"
-                            name="Search">
-                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div> -->
-            <!-- <div class="col-4">
-                    <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#NewModal"
-                        data-bs-whatever="@new">New
-                        Post</button>
-                </div> -->
         </div>
 
         <div class="row d-inline-flex">
@@ -100,3 +91,51 @@
     </div>
 
 </main>
+
+
+<!-- models -->
+<!-- edit profile -->
+<div class="modal fade" id="EditProfileModal" tabindex="-1" aria-labelledby="EditProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="EditProfileModalLabel">Edit Profile</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/fan/<%=fan._id%>/profile/edit?_method=put" enctype="multipart/form-data"
+                    method="POST">
+                    <div class="form-wrapper">
+                        <input type="text" placeholder="Name" class="form-control" name="name"
+                            value="<%=fan.name%> ">
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" class="form-control" name="email"
+                            value="<%=fan.email%> ">
+                        <br>
+                        <input type="password" placeholder="Type your new password" class="form-control" name="password">
+                        <br>
+                    </div>
+
+
+                    <br>
+                    <div class="form-wrapper">
+                        <input type="file" placeholder="image" class="form-control" name="image">
+                    </div>
+                    <br>
+
+                    <div class="modal-footer">
+
+                        <input type="submit" value="Edit" class="btn btn-dark btn-custom" style="float: right;">
+                        <input type="submit" value="close" class="btn btn-dark btn-custom" data-bs-dismiss="modal">
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="../../js/main.js"></script>
