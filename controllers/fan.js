@@ -76,15 +76,15 @@ router.get('/fan/login', (req, res) => {
 router.get("/fan/:id/designers", (req,res)=>{
     Fan.findById(req.params.id)
     .then((fan)=>{
-      console.log('fan:',fan)
+      // console.log('fan:',fan)
       // designer info = designer 
       // designer post = designer 
     //   all posts
       Post.find()
       .then((posts)=>{
-        console.log('designerPosts', posts)
+        // console.log('designerPosts', posts)
+        res.render("fan/profile.ejs",{fan, posts})
       })
-      res.render("fan/designerProfile.ejs",{fan})
     })
     .catch(err => console.log(err));
   })
@@ -118,27 +118,6 @@ router.get("/fan/:id/designers", (req,res)=>{
 //     res.render('designer/profile.ejs')
 // })
 
-//======================================
-// add commend form fan
-//======================================
-
-// router.post('/designer', (req, res) => {
-//     console.log("the commend: ", req.body.commend)
-  
-//     let newCommend = {
-//       content: req.body.commend
-//       // ,
-//       // fan: req.session.userId,
-//       // designer: 
-//     }
-  
-//     Comment.create(newCommend)
-//       .then(commend => {
-//         console.log("creating commend: ", Comment)
-//         res.redirect('/designer', { commend })
-//       }).catch(err => console.log(err));
-  
-//   });
   
 //======================================
 // add commend form fan

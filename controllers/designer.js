@@ -165,6 +165,31 @@ router.put("/designer/:id/profile/edit",upload.single('image'), (req,res)=>{
 });
 
 
+// move to designer 
+//======================================
+// search for designer
+//======================================
+
+router.post("/search", (req, res) => {
+  console.log("search value: ", req.body.Search);
+
+  let searchValue = req.body.Search
+  Designer.find({ $text: { $search: searchValue } })
+  .then(designer => {
+
+    console.log('searched designer: ', designer)
+    res.redirect('back');
+
+  }).catch(err => console.log(err));
+    // .then(designers => {
+    //   // designers = req.session.Search
+    //   console.log('searched designer: ', designers)
+
+    //   res.redirect('index.ejs', { designers })
+    // }).catch(err => console.log(err));
+
+});
+
 // router.get('/designer', (req, res) => {
 
 //   Comment.find()
