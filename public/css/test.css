@@ -151,3 +151,21 @@ h6 {
     margin: 3rem 2rem;
     padding: 1rem;
   }
+
+
+/* stars of rating */
+#rating {
+  font-size: 0;
+}
+#rating span {
+  font-size: 40px;
+}
+#rating span::before {
+  content: "☆";
+}
+#rating span.active::before {
+  content: "★";
+}
+#rating span:hover {
+  cursor: pointer;
+} 
