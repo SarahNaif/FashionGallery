@@ -22,8 +22,6 @@ const storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 
-
-
 //======================================
 // show signup
 //======================================
@@ -48,7 +46,7 @@ router.post(
   console.log('info',req.body.name,req.body.password, req.body.email, req.body.gender)
   Designer.createSecure(req.body.email, req.body.password, req.body.name, req.body.gender, (err, newUser)=> {
     // adding the session of user
-    // req.session.userId = newUser.id;
+    req.session.userId = newUser.id;
     console.log(req.session.userId)
     res.redirect('/designer/login')
   })
@@ -86,20 +84,21 @@ router.post('/designer/login', (req, res) => {
 router.get("/designer/:id/profile", (req,res)=>{
   Designer.findById(req.params.id)
   .then((designer)=>{
-    Comment.find({'designer': designer.id})
-    .then((comment)=>{
-      Post.find({'designer': designer.id})
-      .then((designerPosts)=>{
-        res.render("designer/profile.ejs",{designer, designerPosts, comment})
-      }).catch(err => console.log(err));
-    }).catch(err => console.log(err));
-  }).catch(err => console.log(err));
+    console.log('designer:',designer)
+    Post.find({'designer': designer.id})
+    .then((designerPosts)=>{
+      console.log('designerPosts', designerPosts);
+      Comment.find({'designer': designer.id})
+      .then(comments => {
+        res.render("designer/designer-new.ejs",{designer :designer, designerPosts: designerPosts, comments})
+      })
+    .catch(err => console.log(err));
+    })
+  .catch(err => console.log(err));
+  })
+  .catch(err => console.log(err));
 })
 
-router.get("/designer-new", (req,res)=>{
-  res.render("designer/profile.ejs")
-
-})
 // add new post for the designer
 router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   // console.log(req.file)
@@ -113,7 +112,6 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   Post.create(newPost)
   .then(post => {
       console.log(post)
-      // without reloading
       return res.redirect('back');
   })
   .catch(err => console.log(err))
@@ -122,7 +120,6 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
 // edit post 
 // /designer/id/post/id/edit
 router.put('/designer/:id/post/:pid/edit', upload.single('image'), (req, res) =>{
-  console.log('you are ////////////////////////////////////////////////////')
   console.log('req.body.title', req.body.title)
   let updatedPost = {
       title: req.body.title,
@@ -165,12 +162,19 @@ router.put("/designer/:id/profile/edit",upload.single('image'), (req,res)=>{
   console.log('updatedProfile',updatedProfile)
   Designer.findByIdAndUpdate((req.params.id, updatedProfile))
   .then( (designer) =>{
-    // refresh the page
-        // res.redirect("/post/:" + designer.id)
+    res.redirect('back',);
     })
     .catch(err => console.log(err));
 });
 
+// search for post
+router.post("/search/post", (req, res) => {
+  console.log("search value: ", req.body.Search);
+  let searchValue = req.body.Search
+  Post.find({ $text: { $search: searchValue } })
+  .then(posts => {
+    console.log('searched designer: ', posts)
+  }).catch(err => console.log(err));
+});
 
-// export routes
 module.exports = router
