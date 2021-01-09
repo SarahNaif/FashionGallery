@@ -22,8 +22,6 @@ const storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 
-
-
 //======================================
 // show signup
 //======================================
@@ -87,22 +85,20 @@ router.get("/designer/:id/profile", (req,res)=>{
   Designer.findById(req.params.id)
   .then((designer)=>{
     console.log('designer:',designer)
-    // designer info = designer 
-    // designer post = designer 
     Post.find({'designer': designer.id})
     .then((designerPosts)=>{
       console.log('designerPosts', designerPosts);
-      res.render("designer/designer-new.ejs",{designer :designer, designerPosts: designerPosts})
+      Comment.find({'designer': designer.id})
+      .then(comments => {
+        res.render("designer/designer-new.ejs",{designer :designer, designerPosts: designerPosts, comments})
+      })
+    .catch(err => console.log(err));
     })
   .catch(err => console.log(err));
   })
   .catch(err => console.log(err));
 })
 
-router.get("/designer-new", (req,res)=>{
-  res.render("designer/designer-new.ejs")
-
-})
 // add new post for the designer
 router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   // console.log(req.file)
@@ -116,7 +112,6 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
   Post.create(newPost)
   .then(post => {
       console.log(post)
-      // without reloading
       return res.redirect('back');
   })
   .catch(err => console.log(err))
@@ -125,7 +120,6 @@ router.post("/designer/:id/post/new",upload.single('image'),(req, res) => {
 // edit post 
 // /designer/id/post/id/edit
 router.put('/designer/:id/post/:pid/edit', upload.single('image'), (req, res) =>{
-  console.log('you are ////////////////////////////////////////////////////')
   console.log('req.body.title', req.body.title)
   let updatedPost = {
       title: req.body.title,
@@ -168,76 +162,19 @@ router.put("/designer/:id/profile/edit",upload.single('image'), (req,res)=>{
   console.log('updatedProfile',updatedProfile)
   Designer.findByIdAndUpdate((req.params.id, updatedProfile))
   .then( (designer) =>{
-    // refresh the page
-        // res.redirect("/post/:" + designer.id)
+    res.redirect('back',);
     })
     .catch(err => console.log(err));
 });
 
+// search for post
+router.post("/search/post", (req, res) => {
+  console.log("search value: ", req.body.Search);
+  let searchValue = req.body.Search
+  Post.find({ $text: { $search: searchValue } })
+  .then(posts => {
+    console.log('searched designer: ', posts)
+  }).catch(err => console.log(err));
+});
 
-// router.get('/designer', (req, res) => {
-
-//   Comment.find()
-//     .populate('Designer')
-//     .populate('Fan')
-//     .then(comment => {
-//       Designer.find()
-//         .then(designer => {
-//           Post.find()
-//             .then((post) => {
-//               res.render('designer/designer.ejs', { comment, designer, post })
-//             })
-//         })
-//     }).catch(err => console.log(err));
-// });
-
-
-
-// router.get('/designer/id/profile/edit', (req, res) => {
-//   res.render('designer/profile.ejs')
-// })
-
-// //to discuss
-// router.get('/designer/id/post/new', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/post/id/edit', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/post/id/delete', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/posts', (req, res) => {
-//   res.render('designer/post.ejs')
-// })
-
-// router.get('/designer/id/review', (req, res) => {
-//   res.render('designer/profile.ejs')
-// })
-
-
-
-
-
-//======================================
-// show single designer
-//======================================
-// router.get('/designer/:id', (req, res) => {
-//   var id = req.params.id;
-
-//   Comment.findById(id)
-//     .populate('Designer')
-//     .populate('Fan')
-//     .then(comment => {
-//       console.log("the data", comment)
-//       res.render('designer.ejs', { comment });
-//     }).catch(err => console.log(err));
-
-// });
-
-
-// export routes
 module.exports = router
